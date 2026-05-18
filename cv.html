@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CV - Sébastien Beck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #060816;
+        --panel: rgba(255, 255, 255, 0.06);
+        --panel-strong: rgba(255, 255, 255, 0.1);
+        --border: rgba(255, 255, 255, 0.12);
+        --text: #ffffff;
+        --muted: rgba(255, 255, 255, 0.68);
+        --soft: rgba(255, 255, 255, 0.5);
+        --cyan: #22d3ee;
+        --violet: #a855f7;
+        --button-gradient: linear-gradient(90deg, #e879f9, #a78bfa, #22d3ee);
+        --button-gradient-hover: linear-gradient(90deg, #f0abfc, #c4b5fd, #67e8f9);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top left, rgba(168, 85, 247, 0.22), transparent 30rem),
+          radial-gradient(circle at top right, rgba(34, 211, 238, 0.18), transparent 28rem),
+          var(--bg);
+        color: var(--text);
+        font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: min(1100px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0;
+      }
+
+      .toolbar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+
+      .toolbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .language-switch {
+        display: inline-flex;
+        align-items: center;
+        box-sizing: border-box;
+        height: 40px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: rgba(0, 0, 0, 0.24);
+        padding: 4px;
+      }
+
+      .language-button {
+        border: 0;
+        border-radius: 12px;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+        font: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        height: 30px;
+        padding: 0 12px;
+        transition:
+          background 180ms ease,
+          color 180ms ease;
+      }
+
+      .language-button:hover,
+      .language-button.active {
+        background: var(--button-gradient);
+        color: white;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 16px;
+        background: var(--button-gradient);
+        color: white;
+        cursor: pointer;
+        font: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 10px 16px;
+        box-shadow: 0 12px 28px rgba(88, 28, 135, 0.28);
+        transition:
+          background 180ms ease,
+          transform 180ms ease;
+      }
+
+      .button:hover {
+        background: var(--button-gradient-hover);
+      }
+
+      .cv {
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 32px;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(18px);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 28px;
+        padding: 34px;
+        background:
+          linear-gradient(135deg, rgba(96, 153, 38, 0.2), transparent 34%),
+          linear-gradient(135deg, rgba(168, 85, 247, 0.18), rgba(34, 211, 238, 0.11));
+        border-bottom: 1px solid var(--border);
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--soft);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 720px;
+        font-size: clamp(36px, 6vw, 64px);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #ffffff, #b8f2a2, #7dd3fc);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .intro {
+        max-width: 720px;
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      .contact-card {
+        align-self: stretch;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: rgba(0, 0, 0, 0.24);
+        padding: 22px;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .contact-item {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+        font-size: 14px;
+        padding: 12px;
+        overflow-wrap: anywhere;
+      }
+
+      .contact-link {
+        color: #7dd3fc;
+        font-weight: 700;
+        text-decoration: underline;
+        text-decoration-color: rgba(125, 211, 252, 0.45);
+        text-underline-offset: 3px;
+        transition:
+          color 180ms ease,
+          text-decoration-color 180ms ease;
+      }
+
+      .contact-link:hover {
+        color: #b8f2a2;
+        text-decoration-color: currentColor;
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: 0.72fr 1.28fr;
+        gap: 24px;
+        padding: 28px;
+      }
+
+      .column {
+        display: grid;
+        align-content: start;
+        gap: 20px;
+      }
+
+      .section {
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: var(--panel);
+        padding: 22px;
+      }
+
+      .section h2 {
+        color: var(--text);
+        font-size: 20px;
+        letter-spacing: 0;
+      }
+
+      .section p {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .tag {
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.18);
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 13px;
+        padding: 7px 11px;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .item {
+        border-left: 3px solid #a78bfa;
+        padding-left: 16px;
+      }
+
+      .item h3 {
+        font-size: 17px;
+      }
+
+      .item .meta {
+        margin-top: 4px;
+        color: var(--soft);
+        font-size: 13px;
+      }
+
+      .item p {
+        margin-top: 8px;
+      }
+
+      .project-grid {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .project {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        background:
+          linear-gradient(135deg, rgba(96, 153, 38, 0.14), transparent),
+          rgba(255, 255, 255, 0.04);
+        padding: 18px;
+      }
+
+      .project h3 {
+        font-size: 18px;
+      }
+
+      .project p {
+        margin-top: 8px;
+      }
+
+      .project ul,
+      .list {
+        margin: 12px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      @media (max-width: 820px) {
+        .toolbar {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .toolbar-actions {
+          align-items: stretch;
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .language-switch,
+        .button {
+          width: 100%;
+        }
+
+        .language-button {
+          flex: 1;
+        }
+
+        .hero,
+        .content {
+          grid-template-columns: 1fr;
+        }
+
+        .hero,
+        .content {
+          padding: 22px;
+        }
+      }
+
+      @media print {
+        body {
+          background: white;
+          color: #111827;
+        }
+
+        .page {
+          width: 100%;
+          padding: 0;
+        }
+
+        .toolbar {
+          display: none;
+        }
+
+        .cv {
+          border: 0;
+          border-radius: 0;
+          box-shadow: none;
+          background: white;
+        }
+
+        .hero,
+        .section,
+        .project,
+        .contact-card,
+        .contact-item {
+          background: white;
+          border-color: #d1d5db;
+          color: #111827;
+        }
+
+        .eyebrow,
+        .intro,
+        .section p,
+        .project p,
+        .project ul,
+        .list,
+        .contact-item,
+        .item .meta {
+          color: #374151;
+        }
+
+        .gradient-text {
+          color: #111827;
+          background: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="toolbar">
+        <a class="button" href="./" data-i18n="back">
+          Retour au portfolio
+        </a>
+        <div class="toolbar-actions">
+          <div class="language-switch" aria-label="Language">
+            <button class="language-button active" type="button" data-language-button="fr">FR</button>
+            <button class="language-button" type="button" data-language-button="en">EN</button>
+          </div>
+          <button class="button" type="button" onclick="window.print()" data-i18n="download">
+            Télécharger en PDF
+          </button>
+        </div>
+      </div>
+
+      <article class="cv">
+        <header class="hero">
+          <div>
+            <p class="eyebrow" data-i18n="eyebrow">Portfolio développeur</p>
+            <h1>
+              Sébastien Beck<br /><span class="gradient-text" data-i18n="title"
+                >Alternance Web / Backend</span
+              >
+            </h1>
+            <p class="intro" data-i18n="intro">
+              Développeur en formation, orienté logique, backend et projets concrets.
+              Je recherche une alternance pour progresser en équipe, écrire du code utile
+              et participer à des applications réelles.
+            </p>
+          </div>
+
+          <aside class="contact-card">
+            <p class="eyebrow">Contact</p>
+            <div class="contact-list">
+              <div class="contact-item" data-i18n="phone">Téléphone: 06 64 06 27 75</div>
+              <div class="contact-item">GitHub: github.com/sebastien1000</div>
+              <div class="contact-item" data-i18n="rqth">Statut: reconnu RQTH</div>
+              <div class="contact-item" data-i18n="availability">
+                Disponibilité: alternance 2026
+              </div>
+              <div class="contact-item" data-i18n="profile">
+                Profil: développeur web / backend
+              </div>
+              <div class="contact-item" data-i18n="location">Localisation: Normandie</div>
+            </div>
+          </aside>
+        </header>
+
+        <div class="content">
+          <aside class="column">
+            <section class="section">
+              <h2 data-i18n="skillsTitle">Compétences</h2>
+              <div class="tags">
+                <span class="tag">Go</span>
+                <span class="tag">Linux</span>
+                <span class="tag">Git</span>
+                <span class="tag">TCP</span>
+                <span class="tag">BFS</span>
+                <span class="tag">Algorithmie</span>
+                <span class="tag">Backend</span>
+                <span class="tag">Graphes</span>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2 data-i18n="qualitiesTitle">Qualités</h2>
+              <ul class="list">
+                <li data-i18n="qualityOne">Comprendre avant de coder</li>
+                <li data-i18n="qualityTwo">Corriger et améliorer étape par étape</li>
+                <li data-i18n="qualityThree">Travailler avec méthode</li>
+                <li data-i18n="qualityFour">Apprendre régulièrement</li>
+              </ul>
+            </section>
+
+            <section class="section">
+              <h2 data-i18n="goalTitle">Objectif</h2>
+              <p data-i18n="goalText">
+                Trouver une alternance en développement web ou backend pour renforcer
+                mes compétences techniques et contribuer à des projets concrets.
+              </p>
+            </section>
+          </aside>
+
+          <div class="column">
+            <section class="section">
+              <h2 data-i18n="educationTitle">Formation</h2>
+              <div class="timeline">
+                <div class="item">
+                  <h3>Zone01 Normandie</h3>
+                  <p class="meta" data-i18n="educationMeta">Formation développement</p>
+                  <p data-i18n="educationText">
+                    Apprentissage par projets: algorithmie, logique, réseau, Go,
+                    manipulation de données et résolution de problèmes.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h2 data-i18n="projectsTitle">Projets</h2>
+              <div class="project-grid">
+                <article class="project">
+                  <h3>Lem-in</h3>
+                  <p data-i18n="lemText">
+                    Projet d'algorithmie où des fourmis doivent aller de Start à End
+                    en utilisant les meilleurs chemins possibles.
+                  </p>
+                  <ul>
+                    <li data-i18n="lemPointOne">Construction d'un graphe en mémoire</li>
+                    <li data-i18n="lemPointTwo">Recherche de chemins avec BFS</li>
+                    <li data-i18n="lemPointThree">
+                      Gestion de déplacements étape par étape
+                    </li>
+                  </ul>
+                </article>
+
+                <article class="project">
+                  <h3>Net-Cat</h3>
+                  <p data-i18n="netCatText">
+                    Serveur de chat en ligne de commande avec plusieurs utilisateurs
+                    connectés en même temps.
+                  </p>
+                  <ul>
+                    <li data-i18n="netCatPointOne">Gestion des connexions clients</li>
+                    <li data-i18n="netCatPointTwo">Diffusion des messages</li>
+                    <li data-i18n="netCatPointThree">Utilisation des goroutines</li>
+                  </ul>
+                </article>
+
+                <article class="project">
+                  <h3>Exercices Go / Zone01</h3>
+                  <p data-i18n="goText">
+                    Série d'exercices pour renforcer la logique, les fonctions,
+                    les slices, les structs et l'organisation du code.
+                  </p>
+                </article>
+              </div>
+            </section>
+          </div>
+        </div>
+      </article>
+    </main>
+    <script>
+      const translations = {
+        fr: {
+          back: "Retour au portfolio",
+          download: "Télécharger en PDF",
+          eyebrow: "Portfolio développeur",
+          phone: "Téléphone: 06 64 06 27 75",
+          title: "Alternance Web / Backend",
+          intro:
+            "Développeur en formation, orienté logique, backend et projets concrets. Je recherche une alternance pour progresser en équipe, écrire du code utile et participer à des applications réelles.",
+          rqth: "Statut: reconnu RQTH",
+          availability: "Disponibilité: alternance 2026",
+          profile: "Profil: développeur web / backend",
+          location: "Localisation: Normandie",
+          skillsTitle: "Compétences",
+          qualitiesTitle: "Qualités",
+          qualityOne: "Comprendre avant de coder",
+          qualityTwo: "Corriger et améliorer étape par étape",
+          qualityThree: "Travailler avec méthode",
+          qualityFour: "Apprendre régulièrement",
+          goalTitle: "Objectif",
+          goalText:
+            "Trouver une alternance en développement web ou backend pour renforcer mes compétences techniques et contribuer à des projets concrets.",
+          educationTitle: "Formation",
+          educationMeta: "Formation développement",
+          educationText:
+            "Apprentissage par projets: algorithmie, logique, réseau, Go, manipulation de données et résolution de problèmes.",
+          projectsTitle: "Projets",
+          lemText:
+            "Projet d'algorithmie où des fourmis doivent aller de Start à End en utilisant les meilleurs chemins possibles.",
+          lemPointOne: "Construction d'un graphe en mémoire",
+          lemPointTwo: "Recherche de chemins avec BFS",
+          lemPointThree: "Gestion de déplacements étape par étape",
+          netCatText:
+            "Serveur de chat en ligne de commande avec plusieurs utilisateurs connectés en même temps.",
+          netCatPointOne: "Gestion des connexions clients",
+          netCatPointTwo: "Diffusion des messages",
+          netCatPointThree: "Utilisation des goroutines",
+          goText:
+            "Série d'exercices pour renforcer la logique, les fonctions, les slices, les structs et l'organisation du code.",
+        },
+        en: {
+          back: "Back to portfolio",
+          download: "Download as PDF",
+          eyebrow: "Developer portfolio",
+          phone: "Phone: 06 64 06 27 75",
+          title: "Web / Backend Apprenticeship",
+          intro:
+            "Developer in training, focused on logic, backend and concrete projects. I am looking for an apprenticeship to improve within a team, write useful code and contribute to real applications.",
+          rqth: "Status: recognized RQTH",
+          availability: "Availability: 2026 apprenticeship",
+          profile: "Profile: web / backend developer",
+          location: "Location: Normandy, France",
+          skillsTitle: "Skills",
+          qualitiesTitle: "Qualities",
+          qualityOne: "Understand before coding",
+          qualityTwo: "Fix and improve step by step",
+          qualityThree: "Work with method",
+          qualityFour: "Learn regularly",
+          goalTitle: "Goal",
+          goalText:
+            "Find a web or backend apprenticeship to strengthen my technical skills and contribute to concrete projects.",
+          educationTitle: "Education",
+          educationMeta: "Software development training",
+          educationText:
+            "Project-based learning: algorithms, logic, networking, Go, data manipulation and problem solving.",
+          projectsTitle: "Projects",
+          lemText:
+            "Algorithm project where ants must go from Start to End using the best possible paths.",
+          lemPointOne: "In-memory graph construction",
+          lemPointTwo: "Path search with BFS",
+          lemPointThree: "Step-by-step movement management",
+          netCatText:
+            "Command-line chat server with several users connected at the same time.",
+          netCatPointOne: "Client connection management",
+          netCatPointTwo: "Message broadcasting",
+          netCatPointThree: "Use of goroutines",
+          goText:
+            "A series of exercises to strengthen logic, functions, slices, structs and code organization.",
+        },
+      };
+
+      function setLanguage(language) {
+        document.documentElement.lang = language;
+        document.querySelectorAll("[data-i18n]").forEach((element) => {
+          const key = element.dataset.i18n;
+          element.textContent = translations[language][key];
+        });
+        document.querySelectorAll("[data-language-button]").forEach((button) => {
+          button.classList.toggle("active", button.dataset.languageButton === language);
+        });
+      }
+
+      document.querySelectorAll("[data-language-button]").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLanguage(button.dataset.languageButton);
+        });
+      });
+    </script>
+  </body>
+</html>
