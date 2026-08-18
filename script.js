@@ -555,7 +555,7 @@ function renderGithubLinks() {
 function renderText() {
   const t = copy[state.language];
   document.documentElement.lang = state.language;
-  document.title = "Portfolio Dev 3D";
+  document.title = "Sébastien Beck - Portfolio Développeur";
   el.portfolioLabel.textContent = t.portfolio;
   el.siteName.textContent = t.name;
   el.cvTopLabel.textContent = t.cv;
