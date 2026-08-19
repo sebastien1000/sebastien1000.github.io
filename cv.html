@@ -403,6 +403,14 @@
           color: #111827;
           background: none;
         }
+
+        .hero {
+          grid-template-columns: 1.25fr 0.75fr;
+        }
+
+        .content {
+          grid-template-columns: 0.72fr 1.28fr;
+        }
       }
     </style>
   </head>
@@ -443,6 +451,7 @@
             <p class="eyebrow">Contact</p>
             <div class="contact-list">
               <div class="contact-item" data-i18n="phone">Téléphone: 06 64 06 27 75</div>
+              <div class="contact-item">Email: beck.sebastien76220@gmail.com</div>
               <div class="contact-item">GitHub: github.com/sebastien1000</div>
               <div class="contact-item" data-i18n="rqth">Statut: reconnu RQTH</div>
               <div class="contact-item" data-i18n="availability">
@@ -452,6 +461,7 @@
                 Profil: développeur web / backend
               </div>
               <div class="contact-item" data-i18n="location">Localisation: Normandie</div>
+              <div class="contact-item" data-i18n="address">Adresse: Beauvoir-en-Lyons</div>
             </div>
           </aside>
         </header>
@@ -462,9 +472,13 @@
               <h2 data-i18n="skillsTitle">Compétences</h2>
               <div class="tags">
                 <span class="tag">Go</span>
+                <span class="tag">JavaScript</span>
                 <span class="tag">Linux</span>
                 <span class="tag">Git</span>
                 <span class="tag">TCP</span>
+                <span class="tag">GraphQL</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Supabase</span>
                 <span class="tag">BFS</span>
                 <span class="tag">Algorithmie</span>
                 <span class="tag">Backend</span>
@@ -507,6 +521,24 @@
             </section>
 
             <section class="section">
+              <h2 data-i18n="experienceTitle">Expérience professionnelle</h2>
+              <div class="timeline">
+                <div class="item">
+                  <h3 data-i18n="expOneTitle">Agent logistique</h3>
+                  <p class="meta">Leroy Merlin</p>
+                </div>
+                <div class="item">
+                  <h3 data-i18n="expTwoTitle">Maître d'hôtel</h3>
+                  <p class="meta" data-i18n="expTwoMeta">Restauration</p>
+                </div>
+                <div class="item">
+                  <h3 data-i18n="expThreeTitle">Inventoriste</h3>
+                  <p class="meta" data-i18n="expThreeMeta">Travail en usine</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="section">
               <h2 data-i18n="projectsTitle">Projets</h2>
               <div class="project-grid">
                 <article class="project">
@@ -544,6 +576,61 @@
                     les slices, les structs et l'organisation du code.
                   </p>
                 </article>
+
+                <article class="project">
+                  <h3>Forum</h3>
+                  <p data-i18n="forumText">
+                    Projet web de forum avec gestion des utilisateurs, publications,
+                    commentaires et navigation entre les sujets.
+                  </p>
+                  <ul>
+                    <li data-i18n="forumPointOne">Authentification et gestion de session</li>
+                    <li data-i18n="forumPointTwo">Création de posts et commentaires</li>
+                    <li data-i18n="forumPointThree">Organisation des catégories et discussions</li>
+                  </ul>
+                </article>
+
+                <article class="project">
+                  <h3>GraphQL Zone01</h3>
+                  <p data-i18n="graphqlText">
+                    Application front-end qui se connecte à l'intra Zone01, récupère un
+                    token JWT et affiche un tableau de bord personnel avec des statistiques
+                    et des graphiques SVG faits main.
+                  </p>
+                  <ul>
+                    <li data-i18n="graphqlPointOne">Connexion sécurisée et stockage du token JWT</li>
+                    <li data-i18n="graphqlPointTwo">Requêtes GraphQL vers l'API Zone01</li>
+                    <li data-i18n="graphqlPointThree">Graphiques SVG sans bibliothèque externe</li>
+                  </ul>
+                </article>
+
+                <article class="project">
+                  <h3>Planning Salon</h3>
+                  <p data-i18n="planningText">
+                    Application web pour gérer le planning d'un salon: rendez-vous, fiches
+                    clientes, congés et prestations, avec authentification et base de
+                    données réelles via Supabase.
+                  </p>
+                  <ul>
+                    <li data-i18n="planningPointOne">Planning des rendez-vous par collaboratrice</li>
+                    <li data-i18n="planningPointTwo">Authentification sécurisée avec Supabase Auth</li>
+                    <li data-i18n="planningPointThree">Fiches clientes et gestion des congés</li>
+                  </ul>
+                </article>
+
+                <article class="project">
+                  <h3>Make Your Game</h3>
+                  <p data-i18n="gameText">
+                    Jeu de plateforme codé en JavaScript pur, sans Canvas: le personnage
+                    se déplace avec les flèches du clavier et saute de plateforme en
+                    plateforme directement dans le DOM.
+                  </p>
+                  <ul>
+                    <li data-i18n="gamePointOne">Déplacement au clavier et gestion des sauts</li>
+                    <li data-i18n="gamePointTwo">Détection des collisions avec les plateformes</li>
+                    <li data-i18n="gamePointThree">Rendu du jeu en JavaScript et CSS, sans Canvas</li>
+                  </ul>
+                </article>
               </div>
             </section>
           </div>
@@ -564,6 +651,7 @@
           availability: "Disponibilité: alternance 2026",
           profile: "Profil: développeur web / backend",
           location: "Localisation: Normandie",
+          address: "Adresse: Beauvoir-en-Lyons",
           skillsTitle: "Compétences",
           qualitiesTitle: "Qualités",
           qualityOne: "Comprendre avant de coder",
@@ -577,6 +665,12 @@
           educationMeta: "Formation développement",
           educationText:
             "Apprentissage par projets: algorithmie, logique, réseau, Go, manipulation de données et résolution de problèmes.",
+          experienceTitle: "Expérience professionnelle",
+          expOneTitle: "Agent logistique",
+          expTwoTitle: "Maître d'hôtel",
+          expTwoMeta: "Restauration",
+          expThreeTitle: "Inventoriste",
+          expThreeMeta: "Travail en usine",
           projectsTitle: "Projets",
           lemText:
             "Projet d'algorithmie où des fourmis doivent aller de Start à End en utilisant les meilleurs chemins possibles.",
@@ -590,6 +684,26 @@
           netCatPointThree: "Utilisation des goroutines",
           goText:
             "Série d'exercices pour renforcer la logique, les fonctions, les slices, les structs et l'organisation du code.",
+          forumText:
+            "Projet web de forum avec gestion des utilisateurs, publications, commentaires et navigation entre les sujets.",
+          forumPointOne: "Authentification et gestion de session",
+          forumPointTwo: "Création de posts et commentaires",
+          forumPointThree: "Organisation des catégories et discussions",
+          graphqlText:
+            "Application front-end qui se connecte à l'intra Zone01, récupère un token JWT et affiche un tableau de bord personnel avec des statistiques et des graphiques SVG faits main.",
+          graphqlPointOne: "Connexion sécurisée et stockage du token JWT",
+          graphqlPointTwo: "Requêtes GraphQL vers l'API Zone01",
+          graphqlPointThree: "Graphiques SVG sans bibliothèque externe",
+          planningText:
+            "Application web pour gérer le planning d'un salon: rendez-vous, fiches clientes, congés et prestations, avec authentification et base de données réelles via Supabase.",
+          planningPointOne: "Planning des rendez-vous par collaboratrice",
+          planningPointTwo: "Authentification sécurisée avec Supabase Auth",
+          planningPointThree: "Fiches clientes et gestion des congés",
+          gameText:
+            "Jeu de plateforme codé en JavaScript pur, sans Canvas: le personnage se déplace avec les flèches du clavier et saute de plateforme en plateforme directement dans le DOM.",
+          gamePointOne: "Déplacement au clavier et gestion des sauts",
+          gamePointTwo: "Détection des collisions avec les plateformes",
+          gamePointThree: "Rendu du jeu en JavaScript et CSS, sans Canvas",
         },
         en: {
           back: "Back to portfolio",
@@ -603,6 +717,7 @@
           availability: "Availability: 2026 apprenticeship",
           profile: "Profile: web / backend developer",
           location: "Location: Normandy, France",
+          address: "Address: Beauvoir-en-Lyons, France",
           skillsTitle: "Skills",
           qualitiesTitle: "Qualities",
           qualityOne: "Understand before coding",
@@ -616,6 +731,12 @@
           educationMeta: "Software development training",
           educationText:
             "Project-based learning: algorithms, logic, networking, Go, data manipulation and problem solving.",
+          experienceTitle: "Professional experience",
+          expOneTitle: "Logistics agent",
+          expTwoTitle: "Head waiter",
+          expTwoMeta: "Catering / restaurant service",
+          expThreeTitle: "Inventory clerk",
+          expThreeMeta: "Factory work",
           projectsTitle: "Projects",
           lemText:
             "Algorithm project where ants must go from Start to End using the best possible paths.",
@@ -629,6 +750,26 @@
           netCatPointThree: "Use of goroutines",
           goText:
             "A series of exercises to strengthen logic, functions, slices, structs and code organization.",
+          forumText:
+            "A web forum project with user management, posts, comments and topic navigation.",
+          forumPointOne: "Authentication and session handling",
+          forumPointTwo: "Post and comment creation",
+          forumPointThree: "Category and discussion organization",
+          graphqlText:
+            "Front-end app that signs into the Zone01 intranet, retrieves a JWT token and displays a personal dashboard with statistics and hand-built SVG charts.",
+          graphqlPointOne: "Secure login and JWT token storage",
+          graphqlPointTwo: "GraphQL queries against the Zone01 API",
+          graphqlPointThree: "SVG charts with no external library",
+          planningText:
+            "Web app to manage a salon's schedule: appointments, client records, time off and services, with real authentication and a database powered by Supabase.",
+          planningPointOne: "Appointment planning per team member",
+          planningPointTwo: "Secure authentication with Supabase Auth",
+          planningPointThree: "Client records and time-off management",
+          gameText:
+            "Platformer game built in plain JavaScript, without Canvas: the character moves with the arrow keys and jumps from platform to platform directly in the DOM.",
+          gamePointOne: "Keyboard movement and jump handling",
+          gamePointTwo: "Collision detection with platforms",
+          gamePointThree: "Game rendered with JavaScript and CSS, no Canvas",
         },
       };
 
