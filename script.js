@@ -37,6 +37,33 @@ const projects = [
     github: "https://github.com/sebastien1000/forum",
     icon: "message",
   },
+  {
+    id: "graphql-zone01",
+    title: "GraphQL Zone01",
+    stack: ["JavaScript", "GraphQL", "JWT", "SVG"],
+    accent: "linear-gradient(135deg, rgba(99,102,241,0.2), rgba(56,189,248,0.1), rgba(168,85,247,0.2))",
+    demo: "graphql",
+    github: "https://github.com/sebastien1000/graphQL",
+    icon: "chart",
+  },
+  {
+    id: "planning-salon",
+    title: "Planning Salon",
+    stack: ["JavaScript", "Supabase", "Auth", "Planning"],
+    accent: "linear-gradient(135deg, rgba(244,63,94,0.2), rgba(236,72,153,0.1), rgba(168,85,247,0.2))",
+    demo: "planning",
+    github: "https://github.com/sebastien1000/planing-salon",
+    icon: "calendar",
+  },
+  {
+    id: "make-your-game",
+    title: "Make Your Game",
+    stack: ["JavaScript", "DOM", "Jeu vidéo", "Physique 2D"],
+    accent: "linear-gradient(135deg, rgba(34,197,94,0.2), rgba(59,130,246,0.1), rgba(168,85,247,0.2))",
+    demo: "platformer",
+    github: "https://zone01normandie.org/git/anbitho/make-your-game",
+    icon: "game",
+  },
 ];
 
 const copy = {
@@ -50,7 +77,7 @@ const copy = {
     heroText:
       "Je suis en formation développement et je recherche une alternance en développement web / backend. Ici, les recruteurs ne voient pas seulement du code : ils voient ce que mes projets font réellement.",
     stats: [
-      ["4", "projets présentés"],
+      ["7", "projets présentés"],
       ["100%", "démonstration visuelle"],
       ["Go", "langage principal"],
     ],
@@ -125,6 +152,39 @@ const copy = {
           "Interface simple pour lire et publier",
         ],
       },
+      "graphql-zone01": {
+        subtitle: "Authentification JWT et statistiques via l'API GraphQL",
+        summary:
+          "Application front-end qui se connecte à l'intra Zone01, récupère un token JWT et affiche un tableau de bord personnel avec des statistiques et des graphiques SVG faits main.",
+        points: [
+          "Connexion sécurisée et stockage du token JWT",
+          "Requêtes GraphQL vers l'API Zone01",
+          "Graphiques SVG sans bibliothèque externe",
+          "Mini explorateur GraphiQL pour tester des requêtes",
+        ],
+      },
+      "planning-salon": {
+        subtitle: "Gestion de planning et clientes pour un salon",
+        summary:
+          "Application web pour gérer le planning d'un salon: rendez-vous, fiches clientes, congés et prestations, avec authentification et base de données réelles via Supabase.",
+        points: [
+          "Planning des rendez-vous par collaboratrice",
+          "Authentification sécurisée avec Supabase Auth",
+          "Fiches clientes et recherche de rendez-vous",
+          "Gestion des congés et du catalogue de prestations",
+        ],
+      },
+      "make-your-game": {
+        subtitle: "Jeu de plateforme jouable au clavier",
+        summary:
+          "Jeu de plateforme codé en JavaScript pur, sans Canvas: le personnage se déplace avec les flèches du clavier et saute de plateforme en plateforme directement dans le DOM.",
+        points: [
+          "Déplacement du personnage avec les flèches gauche/droite",
+          "Gestion des sauts et de la gravité",
+          "Détection des collisions avec les plateformes",
+          "Rendu du jeu en JavaScript et CSS, sans Canvas",
+        ],
+      },
     },
   },
   en: {
@@ -137,7 +197,7 @@ const copy = {
     heroText:
       "I am studying software development and looking for a web / backend apprenticeship. Here, recruiters do not only see code: they see what my projects actually do.",
     stats: [
-      ["4", "featured projects"],
+      ["7", "featured projects"],
       ["100%", "visual demonstration"],
       ["Go", "main language"],
     ],
@@ -212,6 +272,39 @@ const copy = {
           "Simple reading and publishing interface",
         ],
       },
+      "graphql-zone01": {
+        subtitle: "JWT authentication and stats through the GraphQL API",
+        summary:
+          "Front-end app that signs into the Zone01 intranet, retrieves a JWT token and displays a personal dashboard with statistics and hand-built SVG charts.",
+        points: [
+          "Secure login and JWT token storage",
+          "GraphQL queries against the Zone01 API",
+          "SVG charts with no external library",
+          "Mini GraphiQL explorer to test queries",
+        ],
+      },
+      "planning-salon": {
+        subtitle: "Scheduling and client management for a salon",
+        summary:
+          "Web app to manage a salon's schedule: appointments, client records, time off and services, with real authentication and a database powered by Supabase.",
+        points: [
+          "Appointment planning per team member",
+          "Secure authentication with Supabase Auth",
+          "Client records and appointment search",
+          "Time-off management and service catalog",
+        ],
+      },
+      "make-your-game": {
+        subtitle: "A platformer game playable with the keyboard",
+        summary:
+          "Platformer game built in plain JavaScript, without Canvas: the character moves with the arrow keys and jumps from platform to platform directly in the DOM.",
+        points: [
+          "Character movement with the left/right arrow keys",
+          "Jump and gravity handling",
+          "Collision detection with platforms",
+          "Game rendered with JavaScript and CSS, no Canvas",
+        ],
+      },
     },
   },
 };
@@ -262,6 +355,15 @@ function iconSvg(type) {
   }
   if (type === "message") {
     return '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h16v11H7l-3 3zm2 2v7.17L6.17 13H18V6zm2 2h8v2H8zm0 3h5v2H8z"/></svg>';
+  }
+  if (type === "chart") {
+    return '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 20V10h4v10zm6 0V4h4v16zm6 0v-7h4v7z"/></svg>';
+  }
+  if (type === "calendar") {
+    return '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 2h2v2h6V2h2v2h3v18H4V4h3zm11 8H6v10h12zM6 6v2h12V6z"/></svg>';
+  }
+  if (type === "game") {
+    return '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 6h10a5 5 0 0 1 5 5v3a3 3 0 0 1-5.24 2.03L15 14.5H9l-1.76 1.53A3 3 0 0 1 2 14v-3a5 5 0 0 1 5-5zm2 4H7v2H5v2h2v2h2v-2h2v-2H9zm7.5 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-3 3a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>';
   }
   return '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M8.7 16.7 4 12l4.7-4.7L10.1 8.7 6.8 12l3.3 3.3zM15.3 7.3 20 12l-4.7 4.7-1.4-1.4 3.3-3.3-3.3-3.3z"/></svg>';
 }
@@ -502,11 +604,90 @@ function forumDemo() {
   `;
 }
 
+function graphqlDemo() {
+  return `
+    <div class="demo simple graphql">
+      <div class="server-box">API<br />GraphQL</div>
+      <div class="chat-user" style="left:18%;top:28%;">Login</div>
+      <div class="chat-user delay-1" style="left:22%;top:70%;">JWT</div>
+      <div class="floating-message msg-1"></div>
+      <div class="floating-message msg-2"></div>
+      <div class="code-panel">
+        <p class="lem-small">Stats</p>
+        <p class="lem-title">Tableau de bord</p>
+        <div class="chart-bars">
+          <span class="chart-bar bar-1"></span>
+          <span class="chart-bar bar-2"></span>
+          <span class="chart-bar bar-3"></span>
+          <span class="chart-bar bar-4"></span>
+          <span class="chart-bar bar-5"></span>
+        </div>
+      </div>
+      ${demoBottomGrid([
+        ["Auth", "Connexion + JWT"],
+        ["GraphQL", "Requêtes API"],
+        ["SVG", "Graphiques natifs"],
+        ["Zone01", "Intra + profil"],
+      ])}
+    </div>
+  `;
+}
+
+function planningDemo() {
+  return `
+    <div class="demo simple planning">
+      <div class="server-box">Supabase<br />Auth + DB</div>
+      <div class="forum-post" style="left:14%;top:22%;">RDV 9h</div>
+      <div class="forum-post delay-1" style="left:66%;top:24%;">Congé</div>
+      <div class="forum-post delay-2" style="left:18%;top:64%;">RDV 14h</div>
+      <div class="forum-post delay-3" style="left:68%;top:66%;">RDV 16h</div>
+      <div class="comment-dot comment-1"></div>
+      <div class="comment-dot comment-2"></div>
+      <div class="comment-dot comment-3"></div>
+      <div class="comment-dot comment-4"></div>
+      ${demoBottomGrid([
+        ["Planning", "Rendez-vous par jour"],
+        ["Clientes", "Fiches et historique"],
+        ["Auth", "Supabase Auth"],
+        ["Congés", "Absences équipe"],
+      ])}
+    </div>
+  `;
+}
+
+function platformerDemo() {
+  return `
+    <div class="demo simple platformer">
+      <div class="platform plat-1"></div>
+      <div class="platform plat-2"></div>
+      <div class="platform plat-3"></div>
+      <div class="platform plat-4"></div>
+      <div class="player">🧍</div>
+      <div class="key-hint key-left">←</div>
+      <div class="key-hint key-right">→</div>
+      <div class="code-panel">
+        <p class="lem-small">Make Your Game</p>
+        <p class="lem-title">Plateforme 2D</p>
+        <p class="lem-desc">Le personnage saute de plateforme en plateforme grâce aux flèches du clavier, avec gravité et collisions gérées en JavaScript, sans Canvas.</p>
+      </div>
+      ${demoBottomGrid([
+        ["Clavier", "Flèches directionnelles"],
+        ["Physique", "Gravité et sauts"],
+        ["Collisions", "Plateformes et sol"],
+        ["DOM", "Rendu sans Canvas"],
+      ])}
+    </div>
+  `;
+}
+
 function renderDemo(type, target) {
   let html = codeDemo();
   if (type === "lem") html = lemDemo();
   if (type === "chat") html = chatDemo();
   if (type === "forum") html = forumDemo();
+  if (type === "graphql") html = graphqlDemo();
+  if (type === "planning") html = planningDemo();
+  if (type === "platformer") html = platformerDemo();
   target.innerHTML = html;
 }
 
