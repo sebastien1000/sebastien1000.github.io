@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Carte · Sébastien Beck</title>
+  <meta name="theme-color" content="#101820">
+  <meta name="robots" content="noindex">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icone-192.png">
+  <link rel="apple-touch-icon" href="icone-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Ma carte">
+  <style>
+    :root { --fond: #101820; --carte: #18232d; --texte: #e8edf1; --discret: #a3afba; --accent: #1f9d7a; --accent-clair: #5fd3b0; --ease: cubic-bezier(0.22, 1, 0.36, 1); }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--fond); color: var(--texte); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+    main { max-width: 440px; margin: 0 auto; padding: max(20px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom)); min-height: 100dvh; display: flex; flex-direction: column; gap: 16px; }
+    .tete { display: flex; align-items: center; gap: 14px; }
+    .tete img { width: 56px; height: 56px; border-radius: 14px; object-fit: cover; object-position: center 30%; }
+    h1 { font-size: 22px; margin: 0; font-weight: 600; }
+    .tete p { margin: 2px 0 0; color: var(--discret); font-size: 14px; }
+    .qr { background: #fff; border-radius: 20px; padding: 12px; display: grid; place-items: center; }
+    .qr img { width: 100%; max-width: 300px; aspect-ratio: 1; display: block; }
+    .aide { text-align: center; color: var(--discret); font-size: 13px; margin: -6px 0 0; }
+    .onglets { display: grid; grid-template-columns: 1fr 1fr; background: var(--carte); border-radius: 12px; padding: 4px; }
+    .onglets button { border: 0; background: none; color: var(--discret); font: inherit; font-weight: 600; padding: 10px; border-radius: 9px; }
+    .onglets button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+    .actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .actions a, .actions button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 76px; background: var(--carte); color: var(--texte); border: 0; border-radius: 14px; font: inherit; font-size: 14px; font-weight: 600; text-decoration: none; transition: background-color 150ms var(--ease); }
+    .actions a:active, .actions button:active { transform: scale(0.98); }
+    .actions .principal { grid-column: 1 / -1; background: var(--accent); color: #fff; min-height: 60px; flex-direction: row; font-size: 16px; }
+    .actions svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px); background: #fff; color: #101820; font-weight: 600; font-size: 14px; padding: 10px 16px; border-radius: 10px; opacity: 0; transition: opacity 200ms var(--ease), transform 200ms var(--ease); pointer-events: none; }
+    .toast.vu { opacity: 1; transform: translate(-50%, 0); }
+    .lien { text-align: center; font-size: 13px; color: var(--discret); word-break: break-all; margin: 0; }
+  </style>
+</head>
+<body>
+<main>
+  <header class="tete">
+    <img src="../photo.jpg" alt="">
+    <div>
+      <h1>Sébastien Beck</h1>
+      <p>Développeur full stack · en recherche d'alternance</p>
+    </div>
+  </header>
+
+  <div class="onglets" role="group" aria-label="Que partager ?">
+    <button type="button" data-cible="portfolio" aria-pressed="true">Portfolio</button>
+    <button type="button" data-cible="cv" aria-pressed="false">CV</button>
+  </div>
+
+  <div class="qr"><img id="qr" src="qr.svg" alt="QR code"></div>
+  <p class="aide" id="aide">Faites scanner ce code : il ouvre mon portfolio</p>
+
+  <div class="actions">
+    <button class="principal" type="button" id="partager">
+      <svg viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>
+      <span id="partager-texte">Partager mon portfolio</span>
+    </button>
+    <a id="mail" href="#">
+      <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+      Par e-mail
+    </a>
+    <a id="sms" href="#">
+      <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Par SMS
+    </a>
+    <button type="button" id="copier">
+      <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      Copier le lien
+    </button>
+    <a id="ouvrir" href="../" target="_blank" rel="noreferrer">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+      Ouvrir
+    </a>
+  </div>
+  <p class="lien" id="lien"></p>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+  const BASE = "https://sebastien1000.github.io/";
+  const choix = {
+    portfolio: { url: BASE, qr: "qr.svg", aide: "Faites scanner ce code : il ouvre mon portfolio", bouton: "Partager mon portfolio", ouvrir: "../",
+      sujet: "Portfolio de Sébastien Beck · développeur full stack",
+      texte: "Bonjour, voici mon portfolio avec mes projets animés et mon CV :" },
+    cv: { url: BASE + "CV_Sebastien_Beck.pdf", qr: "qr-cv.svg", aide: "Faites scanner ce code : il ouvre mon CV en PDF", bouton: "Envoyer mon CV", ouvrir: "../CV_Sebastien_Beck.pdf",
+      sujet: "CV de Sébastien Beck · alternance développeur full stack",
+      texte: "Bonjour, voici mon CV pour une alternance de développeur full stack :" },
+  };
+  let actuel = "portfolio";
+  const $ = (id) => document.getElementById(id);
+
+  function montrer(msg) { const t = $("toast"); t.textContent = msg; t.classList.add("vu"); setTimeout(() => t.classList.remove("vu"), 1800); }
+
+  function maj() {
+    const c = choix[actuel];
+    $("qr").src = c.qr;
+    $("aide").textContent = c.aide;
+    $("partager-texte").textContent = c.bouton;
+    $("ouvrir").href = c.ouvrir;
+    $("lien").textContent = c.url;
+    const corps = `${c.texte}\n${c.url}\n\nSébastien Beck · 06 64 06 27 75`;
+    $("mail").href = `mailto:?subject=${encodeURIComponent(c.sujet)}&body=${encodeURIComponent(corps)}`;
+    $("sms").href = `sms:?&body=${encodeURIComponent(c.texte + " " + c.url)}`;
+    document.querySelectorAll(".onglets button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.cible === actuel));
+  }
+
+  document.querySelectorAll(".onglets button").forEach((b) => b.addEventListener("click", () => { actuel = b.dataset.cible; maj(); }));
+
+  $("partager").addEventListener("click", async () => {
+    const c = choix[actuel];
+    try {
+      if (actuel === "cv" && navigator.canShare) {
+        const r = await fetch("../CV_Sebastien_Beck.pdf");
+        const f = new File([await r.blob()], "CV_Sebastien_Beck.pdf", { type: "application/pdf" });
+        if (navigator.canShare({ files: [f] })) { await navigator.share({ files: [f], title: c.sujet, text: c.texte }); return; }
+      }
+      if (navigator.share) { await navigator.share({ title: c.sujet, text: c.texte, url: c.url }); return; }
+      await navigator.clipboard.writeText(c.url); montrer("Lien copié");
+    } catch (e) { if (e.name !== "AbortError") montrer("Partage impossible, lien copié"), navigator.clipboard?.writeText(c.url); }
+  });
+
+  $("copier").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(choix[actuel].url); montrer("Lien copié"); }
+    catch { montrer(choix[actuel].url); }
+  });
+
+  maj();
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");
+</script>
+</body>
+</html>
