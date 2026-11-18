@@ -1,613 +1,374 @@
-const tags = ["Go", "Linux", "Git", "TCP", "BFS", "Algorithmie", "Backend"];
+// Animations qui montrent ce que fait chaque projet, comme une courte vidéo d'utilisation.
+// Elles démarrent quand la carte arrive à l'écran, se jouent 2 fois, puis restent sur leur dernière image.
+// Si l'utilisateur a demandé moins d'animations, on affiche directement l'image finale.
 
-const projects = [
-  {
-    id: "lem-in",
-    title: "Lem-in",
-    stack: ["Go", "BFS", "Graphes", "Algorithmie"],
-    accent: "linear-gradient(135deg, rgba(168,85,247,0.2), rgba(217,70,239,0.1), rgba(34,211,238,0.2))",
-    demo: "lem",
-    github: "https://github.com/sebastien1000/lem-in",
-    icon: "network",
-  },
-  {
-    id: "net-cat",
-    title: "Net-Cat",
-    stack: ["Go", "TCP", "Goroutines", "Concurrence"],
-    accent: "linear-gradient(135deg, rgba(34,211,238,0.2), rgba(14,165,233,0.1), rgba(168,85,247,0.2))",
-    demo: "chat",
-    github: "https://github.com/sebastien1000/net-cat",
-    icon: "terminal",
-  },
-  {
-    id: "zone01-go",
-    title: "Exercices Go / Zone01",
-    stack: ["Go", "Fonctions", "Slices", "Structs"],
-    accent: "linear-gradient(135deg, rgba(16,185,129,0.2), rgba(20,184,166,0.1), rgba(34,211,238,0.2))",
-    demo: "code",
-    github: "https://github.com/sebastien1000",
-    icon: "code",
-  },
-  {
-    id: "forum",
-    title: "Forum",
-    stack: ["Go", "SQLite", "Auth", "Web"],
-    accent: "linear-gradient(135deg, rgba(251,191,36,0.2), rgba(249,115,22,0.1), rgba(34,211,238,0.2))",
-    demo: "forum",
-    github: "https://github.com/sebastien1000/forum",
-    icon: "message",
-  },
-];
+const calme = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const attendre = (ms) => new Promise((r) => setTimeout(r, calme ? 0 : ms));
+const TOURS = 2;
+const NS = "http://www.w3.org/2000/svg";
 
-const copy = {
-  fr: {
-    portfolio: "Portfolio développeur",
-    name: "Sébastien Beck - Alternance Développeur Web / Backend",
-    cv: "Voir mon CV",
-    heroBadge: "Des projets montrés en animation pour être compris en un coup d'oeil",
-    heroTitleStart: "Je transforme mes projets en",
-    heroTitleHighlight: "démonstrations visuelles",
-    heroText:
-      "Je suis en formation développement et je recherche une alternance en développement web / backend. Ici, les recruteurs ne voient pas seulement du code : ils voient ce que mes projets font réellement.",
-    stats: [
-      ["4", "projets présentés"],
-      ["100%", "démonstration visuelle"],
-      ["Go", "langage principal"],
-    ],
-    projectsEyebrow: "Mes projets",
-    projectsTitle: "Des projets expliqués simplement",
-    projectsText:
-      "Chaque carte contient une animation, une explication claire et les compétences visibles pour qu'un recruteur comprenne vite la valeur du projet.",
-    viewCode: "Voir le code",
-    infoCards: [
-      {
-        title: "Ce que je cherche",
-        text: "Une alternance en développement web ou backend pour continuer à progresser, travailler en équipe et participer à des projets concrets.",
-      },
-      {
-        title: "Ma façon de travailler",
-        text: "J'aime comprendre comment les choses fonctionnent, corriger mes erreurs, recommencer et améliorer étape par étape.",
-      },
-      {
-        title: "Pourquoi ce portfolio",
-        text: "Parce que tout le monde ne lit pas du code. Ici, mes projets sont visibles et compréhensibles même sans bagage technique.",
-      },
-    ],
-    githubTitle: "Tous mes projets GitHub",
-    githubText:
-      "Mes dépôts publics regroupent mes exercices, mes projets Go et mon travail d'apprentissage au fil de la formation.",
-    viewGithub: "Voir mon GitHub",
-    contactTitle: "Intéressé par mon profil ?",
-    contactText:
-      "Je recherche une alternance où je peux apprendre, coder et apporter de la valeur avec sérieux, motivation et logique. Mes coordonnées sont disponibles dans mon CV.",
-    projects: {
-      "lem-in": {
-        subtitle: "Visualisation d'un graphe et déplacement des fourmis",
-        summary:
-          "Projet d'algorithmie où des fourmis doivent aller de Start à End en utilisant les meilleurs chemins possibles.",
-        points: [
-          "Construction d'un graphe en mémoire",
-          "Recherche de chemins avec BFS",
-          "Gestion des déplacements de plusieurs fourmis",
-          "Respect des règles de circulation entre rooms",
-        ],
-      },
-      "net-cat": {
-        subtitle: "Simulation d'un serveur de chat réseau",
-        summary:
-          "Serveur de chat en ligne de commande avec plusieurs utilisateurs connectés en même temps.",
-        points: [
-          "Gestion des connexions clients",
-          "Diffusion des messages à plusieurs utilisateurs",
-          "Utilisation des goroutines",
-          "Organisation d'un serveur réseau simple",
-        ],
-      },
-      "zone01-go": {
-        subtitle: "Bases solides en logique et code propre",
-        summary:
-          "Série d'exercices pour apprendre les bases, la logique, les structures de données et les bonnes habitudes de développement.",
-        points: [
-          "Fonctions et retours multiples",
-          "Manipulation de slices et strings",
-          "Structures et organisation du code",
-          "Habitude de correction et debug",
-        ],
-      },
-      forum: {
-        subtitle: "Plateforme de discussion avec posts et commentaires",
-        summary:
-          "Projet web de forum avec gestion des utilisateurs, publications, commentaires et navigation entre les sujets.",
-        points: [
-          "Authentification et gestion de session",
-          "Création de posts et commentaires",
-          "Organisation des catégories et discussions",
-          "Interface simple pour lire et publier",
-        ],
-      },
-    },
-  },
-  en: {
-    portfolio: "Developer portfolio",
-    name: "Sébastien Beck - Web / Backend Developer Apprenticeship",
-    cv: "View my resume",
-    heroBadge: "Animated projects that can be understood at a glance",
-    heroTitleStart: "I turn my projects into",
-    heroTitleHighlight: "visual demonstrations",
-    heroText:
-      "I am studying software development and looking for a web / backend apprenticeship. Here, recruiters do not only see code: they see what my projects actually do.",
-    stats: [
-      ["4", "featured projects"],
-      ["100%", "visual demonstration"],
-      ["Go", "main language"],
-    ],
-    projectsEyebrow: "My projects",
-    projectsTitle: "Projects explained simply",
-    projectsText:
-      "Each card includes an animation, a clear explanation and visible skills so a recruiter can quickly understand the value of the project.",
-    viewCode: "View code",
-    infoCards: [
-      {
-        title: "What I am looking for",
-        text: "A web or backend apprenticeship to keep improving, work in a team and contribute to real projects.",
-      },
-      {
-        title: "How I work",
-        text: "I like understanding how things work, fixing my mistakes, trying again and improving step by step.",
-      },
-      {
-        title: "Why this portfolio",
-        text: "Not everyone reads code. Here, my projects are visible and understandable even without a technical background.",
-      },
-    ],
-    githubTitle: "All my GitHub projects",
-    githubText:
-      "My public repositories include my exercises, Go projects and learning work throughout the training.",
-    viewGithub: "View my GitHub",
-    contactTitle: "Interested in my profile?",
-    contactText:
-      "I am looking for an apprenticeship where I can learn, code and bring value with seriousness, motivation and logic. My contact details are available in my resume.",
-    projects: {
-      "lem-in": {
-        subtitle: "Graph visualization and ant movement",
-        summary:
-          "Algorithm project where ants must go from Start to End using the best possible paths.",
-        points: [
-          "In-memory graph construction",
-          "Path search with BFS",
-          "Step-by-step movement management for several ants",
-          "Traffic rules between rooms",
-        ],
-      },
-      "net-cat": {
-        subtitle: "Network chat server simulation",
-        summary:
-          "Command-line chat server with several users connected at the same time.",
-        points: [
-          "Client connection management",
-          "Message broadcasting to several users",
-          "Use of goroutines",
-          "Simple network server organization",
-        ],
-      },
-      "zone01-go": {
-        subtitle: "Strong foundations in logic and clean code",
-        summary:
-          "A series of exercises to learn fundamentals, logic, data structures and good development habits.",
-        points: [
-          "Functions and multiple returns",
-          "Slices and strings manipulation",
-          "Structs and code organization",
-          "Debugging and correction habits",
-        ],
-      },
-      forum: {
-        subtitle: "Discussion platform with posts and comments",
-        summary:
-          "A web forum project with user management, posts, comments and topic navigation.",
-        points: [
-          "Authentication and session handling",
-          "Post and comment creation",
-          "Category and discussion organization",
-          "Simple reading and publishing interface",
-        ],
-      },
-    },
-  },
-};
-
-const state = {
-  language: "fr",
-  selectedId: "lem-in",
-};
-
-const el = {
-  portfolioLabel: document.querySelector("#portfolio-label"),
-  siteName: document.querySelector("#site-name"),
-  cvTopLabel: document.querySelector("#cv-top-label"),
-  heroBadge: document.querySelector("#hero-badge"),
-  heroTitleStart: document.querySelector("#hero-title-start"),
-  heroTitleHighlight: document.querySelector("#hero-title-highlight"),
-  heroText: document.querySelector("#hero-text"),
-  tagList: document.querySelector("#tag-list"),
-  statsGrid: document.querySelector("#stats-grid"),
-  heroVisual: document.querySelector("#hero-visual"),
-  projectsEyebrow: document.querySelector("#projects-eyebrow"),
-  projectsTitle: document.querySelector("#projects-title"),
-  projectsText: document.querySelector("#projects-text"),
-  projectList: document.querySelector("#project-list"),
-  projectDemo: document.querySelector("#project-demo"),
-  detailTitle: document.querySelector("#detail-title"),
-  detailSummary: document.querySelector("#detail-summary"),
-  detailCodeLabel: document.querySelector("#detail-code-label"),
-  detailCodeLink: document.querySelector("#detail-code-link"),
-  detailPoints: document.querySelector("#detail-points"),
-  infoGrid: document.querySelector("#info-grid"),
-  githubTitle: document.querySelector("#github-title"),
-  githubText: document.querySelector("#github-text"),
-  githubButtonLabel: document.querySelector("#github-button-label"),
-  githubLinks: document.querySelector("#github-links"),
-  contactTitle: document.querySelector("#contact-title"),
-  contactText: document.querySelector("#contact-text"),
-  contactCvLabel: document.querySelector("#contact-cv-label"),
-  langButtons: Array.from(document.querySelectorAll(".lang-btn")),
-};
-
-function iconSvg(type) {
-  if (type === "network") {
-    return '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M5 5h4v4H5zm10 0h4v4h-4zM5 15h4v4H5zm10 0h4v4h-4zM9 7h6v2H9zm-1 2h2v6H8zm6 0h2v6h-2zm-5 6h6v2H9z"/></svg>';
-  }
-  if (type === "terminal") {
-    return '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 5h16v14H4zm2 2v10h12V7zm1.5 2.5L10 12l-2.5 2.5L6 13l1.5-1.5L6 10l1.5-1.5zm4.5 5h5v2h-5z"/></svg>';
-  }
-  if (type === "message") {
-    return '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 4h16v11H7l-3 3zm2 2v7.17L6.17 13H18V6zm2 2h8v2H8zm0 3h5v2H8z"/></svg>';
-  }
-  return '<svg viewBox="0 0 24 24"><path fill="currentColor" d="M8.7 16.7 4 12l4.7-4.7L10.1 8.7 6.8 12l3.3 3.3zM15.3 7.3 20 12l-4.7 4.7-1.4-1.4 3.3-3.3-3.3-3.3z"/></svg>';
+function quandVisible(el, lancer) {
+  if (!el) return;
+  const obs = new IntersectionObserver((entrees) => {
+    if (entrees.some((e) => e.isIntersecting)) { obs.disconnect(); lancer(el); }
+  }, { threshold: 0.35 });
+  obs.observe(el);
 }
 
-function translatedProjects() {
-  const t = copy[state.language];
-  return projects.map((project) => ({
-    ...project,
-    ...t.projects[project.id],
-  }));
+async function taper(el, texte, vitesse = 28) {
+  if (calme) { el.textContent = texte; return; }
+  el.textContent = "";
+  for (const ch of texte) { el.textContent += ch; await attendre(vitesse); }
 }
 
-function selectedProject() {
-  return translatedProjects().find((project) => project.id === state.selectedId);
-}
-
-function renderTags() {
-  el.tagList.innerHTML = tags.map((tag) => `<span class="tag">${tag}</span>`).join("");
-}
-
-function renderStats() {
-  const t = copy[state.language];
-  el.statsGrid.innerHTML = t.stats
-    .map(
-      ([number, label]) => `
-        <article class="stat-card glass">
-          <div class="stat-number">${number}</div>
-          <div class="stat-label">${label}</div>
-        </article>
-      `,
-    )
-    .join("");
-}
-
-function renderProjectList() {
-  const items = translatedProjects();
-  el.projectList.innerHTML = items
-    .map(
-      (project) => `
-        <button class="project-list-item ${project.id === state.selectedId ? "is-active" : ""}" data-project-id="${project.id}" type="button">
-          <div class="project-list-head">
-            <div class="project-head-left">
-              <span class="project-icon-box" style="background:${project.accent}">
-                ${iconSvg(project.icon)}
-              </span>
-              <span>
-                <h3>${project.title}</h3>
-                <p class="project-subtitle">${project.subtitle}</p>
-              </span>
-            </div>
-            <span class="chevron">›</span>
-          </div>
-          <div class="stack-list">
-            ${project.stack.map((item) => `<span class="stack-pill">${item}</span>`).join("")}
-          </div>
-        </button>
-      `,
-    )
-    .join("");
-}
-
-function demoChipGrid(items) {
-  return `
-    <div class="demo-chip-grid">
-      ${items
-        .map(
-          ([title, label]) => `
-            <div class="demo-chip">
-              <strong>${title}</strong>
-              <span>${label}</span>
-            </div>
-          `,
-        )
-        .join("")}
-    </div>
-  `;
-}
-
-function demoBottomGrid(items) {
-  return `
-    <div class="demo-bottom-grid">
-      ${items
-        .map(
-          ([title, label]) => `
-            <div class="demo-chip">
-              <strong>${title}</strong>
-              <span>${label}</span>
-            </div>
-          `,
-        )
-        .join("")}
-    </div>
-  `;
-}
-
-function lemDemo() {
-  return `
-    <div class="demo lem">
-      <div class="lem-stage">
-        <svg class="lem-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="lem-flow-gradient" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="rgba(34,211,238,0.92)"></stop>
-              <stop offset="50%" stop-color="rgba(168,85,247,0.96)"></stop>
-              <stop offset="100%" stop-color="rgba(244,114,182,0.92)"></stop>
-            </linearGradient>
-          </defs>
-          <line class="lem-edge" x1="10" y1="52" x2="32" y2="22"></line>
-          <line class="lem-edge" x1="10" y1="52" x2="32" y2="78"></line>
-          <line class="lem-edge" x1="32" y1="22" x2="56" y2="16"></line>
-          <line class="lem-edge" x1="32" y1="78" x2="58" y2="78"></line>
-          <line class="lem-edge" x1="56" y1="16" x2="88" y2="50"></line>
-          <line class="lem-edge" x1="58" y1="78" x2="88" y2="50"></line>
-          <line class="lem-edge-flow" x1="10" y1="52" x2="32" y2="22"></line>
-          <line class="lem-edge-flow delay-1" x1="10" y1="52" x2="32" y2="78"></line>
-          <line class="lem-edge-flow delay-2" x1="32" y1="22" x2="56" y2="16"></line>
-          <line class="lem-edge-flow delay-3" x1="32" y1="78" x2="58" y2="78"></line>
-          <line class="lem-edge-flow delay-4" x1="56" y1="16" x2="88" y2="50"></line>
-          <line class="lem-edge-flow delay-5" x1="58" y1="78" x2="88" y2="50"></line>
-        </svg>
-        <div class="lem-layer">
-          <div class="lem-node" style="left:10%;top:52%;">Start</div>
-          <div class="lem-node" style="left:32%;top:22%;">A</div>
-          <div class="lem-node" style="left:32%;top:78%;">B</div>
-          <div class="lem-node" style="left:56%;top:16%;">C</div>
-          <div class="lem-node" style="left:58%;top:78%;">D</div>
-          <div class="lem-node" style="left:88%;top:50%;">End</div>
-
-          <div class="ant ant-1">🐜</div>
-          <div class="ant ant-2">🐜</div>
-          <div class="ant ant-3">🐜</div>
-          <div class="ant ant-4">🐜</div>
-
-          <div class="lem-panel left">
-            <p class="lem-small">Lem-in premium</p>
-            <p class="lem-title">Exploration + simulation par tours</p>
-            <p class="lem-desc">Les liens s'illuminent comme une exploration BFS, puis les fourmis avancent étape par étape jusqu'à End.</p>
-          </div>
-
-          <div class="lem-panel right">
-            <p class="lem-small">timeline</p>
-            <div class="timeline">
-              <div class="timeline-row"><span class="timeline-dot"></span><span>Tour 1</span></div>
-              <div class="timeline-row"><span class="timeline-dot"></span><span>Tour 2</span></div>
-              <div class="timeline-row"><span class="timeline-dot"></span><span>Tour 3</span></div>
-              <div class="timeline-row"><span class="timeline-dot"></span><span>Tour 4</span></div>
-            </div>
-            <div class="lem-note">Un recruteur comprend ici la logique de parcours et la progression des fourmis sans lire le code.</div>
-          </div>
-
-          ${demoChipGrid([
-            ["BFS", "recherche des chemins"],
-            ["Tours", "simulation étape par étape"],
-            ["Flux", "répartition des fourmis"],
-            ["Goal", "optimiser l'arrivée"],
-          ])}
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function chatDemo() {
-  return `
-    <div class="demo simple chat">
-      <div class="server-box">Serveur<br />TCP</div>
-      <div class="chat-user" style="left:18%;top:28%;">Ana</div>
-      <div class="chat-user delay-1" style="left:22%;top:70%;">Sam</div>
-      <div class="chat-user delay-2" style="left:82%;top:30%;">Milo</div>
-      <div class="chat-user delay-3" style="left:78%;top:70%;">Noa</div>
-      <div class="floating-message msg-1"></div>
-      <div class="floating-message msg-2"></div>
-      <div class="floating-message msg-3"></div>
-      <div class="floating-message msg-4"></div>
-      ${demoBottomGrid([
-        ["Clients", "Plusieurs connexions"],
-        ["Serveur", "Réception centrale"],
-        ["Diffusion", "Envoi des messages"],
-        ["Go", "Goroutines"],
-      ])}
-    </div>
-  `;
-}
-
-function codeDemo() {
-  const columns = Array.from({ length: 11 }, (_, index) => {
-    const left = 6 + index * 8;
-    const delay = (index * 0.18).toFixed(2);
-    const duration = (2.4 + (index % 3) * 0.5).toFixed(2);
-    return `
-      <div class="code-column" style="left:${left}%;animation-delay:${delay}s;animation-duration:${duration}s;">
-        <span>func</span>
-        <span>{}</span>
-        <span>[]</span>
-        <span>go</span>
-        <span>map</span>
-        <span>if</span>
-      </div>
-    `;
-  }).join("");
-
-  return `
-    <div class="demo simple code">
-      ${columns}
-      <div class="code-panel">
-        <h4>Apprentissage progressif</h4>
-        <p>Exercices réguliers pour mieux comprendre les fonctions, slices, structs, erreurs, logique et organisation du code.</p>
-      </div>
-      ${demoBottomGrid([
-        ["Fonctions", "Entrées / sorties"],
-        ["Slices", "Découpage et parcours"],
-        ["Structs", "Organisation"],
-        ["Debug", "Correction d'erreurs"],
-      ])}
-    </div>
-  `;
-}
-
-function forumDemo() {
-  return `
-    <div class="demo simple forum">
-      <div class="forum-center">Forum<br />Live</div>
-      <div class="forum-post" style="left:14%;top:22%;">Annonce</div>
-      <div class="forum-post delay-1" style="left:66%;top:24%;">Question</div>
-      <div class="forum-post delay-2" style="left:18%;top:64%;">Projet</div>
-      <div class="forum-post delay-3" style="left:68%;top:66%;">Aide</div>
-      <div class="comment-dot comment-1"></div>
-      <div class="comment-dot comment-2"></div>
-      <div class="comment-dot comment-3"></div>
-      <div class="comment-dot comment-4"></div>
-      ${demoBottomGrid([
-        ["Users", "Connexion"],
-        ["Posts", "Publications"],
-        ["Comments", "Réponses"],
-        ["Topics", "Navigation"],
-      ])}
-    </div>
-  `;
-}
-
-function renderDemo(type, target) {
-  let html = codeDemo();
-  if (type === "lem") html = lemDemo();
-  if (type === "chat") html = chatDemo();
-  if (type === "forum") html = forumDemo();
-  target.innerHTML = html;
-}
-
-function renderDetail() {
-  const t = copy[state.language];
-  const project = selectedProject();
-  el.detailTitle.textContent = project.title;
-  el.detailSummary.textContent = project.summary;
-  el.detailCodeLabel.textContent = t.viewCode;
-  el.detailCodeLink.href = project.github;
-  el.detailPoints.innerHTML = project.points
-    .map((point) => `<div class="point">${point}</div>`)
-    .join("");
-  renderDemo(project.demo, el.projectDemo);
-  renderDemo(project.demo, el.heroVisual);
-}
-
-function renderInfo() {
-  const t = copy[state.language];
-  el.infoGrid.innerHTML = t.infoCards
-    .map(
-      (item) => `
-        <article class="info-card glass">
-          <h3>${item.title}</h3>
-          <p>${item.text}</p>
-        </article>
-      `,
-    )
-    .join("");
-}
-
-function renderGithubLinks() {
-  const tProjects = translatedProjects();
-  el.githubLinks.innerHTML = tProjects
-    .map(
-      (project) => `
-        <a class="github-link" href="${project.github}" target="_blank" rel="noreferrer">
-          <span>${project.title}</span>
-          <span aria-hidden="true">↗</span>
-        </a>
-      `,
-    )
-    .join("");
-}
-
-function renderText() {
-  const t = copy[state.language];
-  document.documentElement.lang = state.language;
-  document.title = "Sébastien Beck - Portfolio Développeur";
-  el.portfolioLabel.textContent = t.portfolio;
-  el.siteName.textContent = t.name;
-  el.cvTopLabel.textContent = t.cv;
-  el.heroBadge.textContent = t.heroBadge;
-  el.heroTitleStart.textContent = `${t.heroTitleStart} `;
-  el.heroTitleHighlight.textContent = t.heroTitleHighlight;
-  el.heroText.textContent = t.heroText;
-  el.projectsEyebrow.textContent = t.projectsEyebrow;
-  el.projectsTitle.textContent = t.projectsTitle;
-  el.projectsText.textContent = t.projectsText;
-  el.githubTitle.textContent = t.githubTitle;
-  el.githubText.textContent = t.githubText;
-  el.githubButtonLabel.textContent = t.viewGithub;
-  el.contactTitle.textContent = t.contactTitle;
-  el.contactText.textContent = t.contactText;
-  el.contactCvLabel.textContent = t.cv;
-}
-
-function renderLanguageButtons() {
-  el.langButtons.forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.lang === state.language);
-  });
-}
-
-function render() {
-  renderText();
-  renderLanguageButtons();
-  renderTags();
-  renderStats();
-  renderProjectList();
-  renderDetail();
-  renderInfo();
-  renderGithubLinks();
-}
-
-document.addEventListener("click", (event) => {
-  if (!(event.target instanceof Element)) {
-    return;
-  }
-
-  const langButton = event.target.closest(".lang-btn");
-  if (langButton) {
-    state.language = langButton.dataset.lang;
-    render();
-    return;
-  }
-
-  const projectButton = event.target.closest("[data-project-id]");
-  if (projectButton) {
-    state.selectedId = projectButton.dataset.projectId;
-    render();
-  }
+/* ---------- Fenêtre d'application autour de chaque démo ---------- */
+document.querySelectorAll(".demo[data-titre]").forEach((demo) => {
+  const barre = document.createElement("div");
+  barre.className = "barre-app";
+  barre.innerHTML = `<i></i><i></i><i></i><span>${demo.dataset.titre}</span>`;
+  demo.prepend(barre);
 });
 
-render();
+/* ---------- Curseur de souris simulé ---------- */
+const FLECHE = '<svg viewBox="0 0 16 20" width="16" height="20"><path d="M1 1 L1 16 L5 12 L8 19 L11 18 L8 11 L14 11 Z" fill="#fff" stroke="#101820" stroke-width="1.2" stroke-linejoin="round"/></svg>';
+function curseur(demo) {
+  let c = demo.querySelector(".curseur");
+  if (!c) {
+    c = document.createElement("div");
+    c.className = "curseur";
+    c.innerHTML = FLECHE;
+    demo.appendChild(c);
+  }
+  return c;
+}
+async function viser(demo, cible, fx = 0.5, fy = 0.5) {
+  const c = curseur(demo);
+  const r = cible.getBoundingClientRect();
+  const d = demo.getBoundingClientRect();
+  c.style.transform = `translate(${r.left - d.left + r.width * fx}px, ${r.top - d.top + r.height * fy}px)`;
+  c.classList.add("vu");
+  await attendre(700);
+}
+async function cliquer(demo) {
+  const c = curseur(demo);
+  c.classList.add("clic");
+  await attendre(160);
+  c.classList.remove("clic");
+  await attendre(140);
+}
+function cacherCurseur(demo) { const c = demo.querySelector(".curseur"); if (c) c.classList.remove("vu"); }
+
+/* ---------- Planning Salon ---------- */
+async function planning(el) {
+  const demo = el.closest(".demo");
+  const cases = [...el.querySelectorAll(".pl-grille i")];
+  const vue = el.querySelector(".pl-vue");
+  const toast = el.querySelector(".pl-toast");
+  const pop = document.createElement("div");
+  pop.className = "pl-popup";
+  el.appendChild(pop);
+  const rdv = [
+    [0, "Pose gel", "Mme L.", "a"], [4, "Tatouage", "M. D.", "b"], [8, "Épilation", "Mme R.", "a"],
+    [10, "Manucure", "Mme K.", "b"], [2, "Épilation", "Mme P.", "a"],
+  ];
+  const poser = (i, presta, cliente, qui) => { cases[i].innerHTML = `<b>${presta}</b><small>${cliente}</small>`; cases[i].className = `pris ${qui}`; };
+  const formulaire = async (titre, ligne) => {
+    pop.innerHTML = `<p class="pp-titre">${titre}</p><p>${ligne}</p><span class="pp-bouton">Réserver</span>`;
+    pop.classList.add("vu");
+    await attendre(900);
+    await viser(demo, pop.querySelector(".pp-bouton"));
+    await cliquer(demo);
+    pop.classList.remove("vu");
+  };
+  for (let passe = 0; passe < TOURS; passe++) {
+    cases.forEach((c) => { c.className = ""; c.innerHTML = ""; });
+    vue.textContent = "Vue : administratrice ▾";
+    toast.className = "pl-toast";
+    for (const r of rdv) { await attendre(260); poser(...r); }
+    await attendre(500);
+    // 1. on essaie de réserver une salle déjà prise
+    await viser(demo, cases[4]);
+    await cliquer(demo);
+    await formulaire("Nouveau rendez-vous", "Épilation · Mme S. · mar. 10 h · salle 1");
+    cases[4].classList.add("conflit");
+    toast.textContent = "Salle déjà prise · refusé par la base";
+    toast.classList.add("vu", "erreur");
+    await attendre(1500);
+    cases[4].classList.remove("conflit");
+    toast.classList.remove("vu", "erreur");
+    // 2. on choisit un créneau libre
+    await viser(demo, cases[5]);
+    await cliquer(demo);
+    await formulaire("Nouveau rendez-vous", "Épilation · Mme S. · mer. 10 h · salle 2");
+    poser(5, "Épilation", "Mme S.", "a");
+    cases[5].classList.add("nouveau");
+    toast.textContent = "Rendez-vous enregistré";
+    toast.classList.add("vu", "succes");
+    await attendre(1300);
+    toast.classList.remove("vu", "succes");
+    // 3. vue d'une collaboratrice : les clientes des autres sont masquées par les règles RLS
+    await viser(demo, vue, 0.3);
+    await cliquer(demo);
+    vue.textContent = "Vue : collaboratrice A ▾";
+    cases.forEach((c) => { if (c.classList.contains("b")) c.classList.add("masque"); });
+    toast.textContent = "Clientes des autres masquées (RLS)";
+    toast.classList.add("vu");
+    cacherCurseur(demo);
+    await attendre(2600);
+    if (calme) return;
+  }
+}
+
+/* ---------- Tableau de bord GraphQL ---------- */
+async function graphql(el) {
+  const demo = el.closest(".demo");
+  const code = el.querySelector("code");
+  const svg = el.querySelector("svg");
+  const g = svg.querySelector(".barres");
+  const courbe = svg.querySelector(".courbe");
+  const login = document.createElement("div");
+  login.className = "gq-login";
+  login.innerHTML = '<p class="pp-titre">Connexion Zone01</p><p class="champ"><span class="u"></span></p><p class="champ"><span class="m"></span></p><span class="pp-bouton">Se connecter</span>';
+  el.appendChild(login);
+  const bulle = document.createElement("div");
+  bulle.className = "gq-bulle";
+  el.appendChild(bulle);
+  const requete = 'query { user { transactions(type: "xp") { amount } } }';
+  const valeurs = [30, 46, 41, 62, 55, 78, 70, 92];
+  for (let passe = 0; passe < TOURS; passe++) {
+    g.innerHTML = ""; svg.classList.remove("vu"); code.className = ""; code.textContent = "";
+    bulle.classList.remove("vu");
+    login.classList.add("vu");
+    login.querySelector(".u").textContent = ""; login.querySelector(".m").textContent = "";
+    await attendre(400);
+    await taper(login.querySelector(".u"), "sbeck", 70);
+    await taper(login.querySelector(".m"), "••••••••", 50);
+    await viser(demo, login.querySelector(".pp-bouton"));
+    await cliquer(demo);
+    login.classList.remove("vu");
+    cacherCurseur(demo);
+    code.textContent = "✓ jeton JWT reçu";
+    code.className = "ok";
+    await attendre(700);
+    code.className = "";
+    await taper(code, requete, 20);
+    code.classList.add("ok");
+    code.textContent = requete + "\n→ 200 OK · données reçues";
+    valeurs.forEach((v, i) => {
+      const x = 22 + i * 34;
+      const r = document.createElementNS(NS, "rect");
+      r.setAttribute("x", x); r.setAttribute("width", 20); r.setAttribute("rx", 3);
+      r.setAttribute("y", 120); r.setAttribute("height", 0);
+      if (i === valeurs.length - 1) r.classList.add("fort");
+      g.appendChild(r);
+      setTimeout(() => { r.setAttribute("y", 120 - v); r.setAttribute("height", v); }, calme ? 0 : 90 * i);
+    });
+    courbe.setAttribute("points", valeurs.map((v, i) => `${22 + i * 34 + 10},${120 - v - 10}`).join(" "));
+    await attendre(800);
+    svg.classList.add("vu");
+    await attendre(900);
+    // survol de la dernière barre : une bulle d'information
+    const derniere = g.lastElementChild;
+    await viser(demo, derniere, 0.5, 0.2);
+    const r = derniere.getBoundingClientRect(), d = el.getBoundingClientRect();
+    bulle.style.left = `${Math.max(0, r.left - d.left - 120)}px`;
+    bulle.style.top = `${r.top - d.top - 34}px`;
+    bulle.textContent = "semaine 8 · la plus forte";
+    bulle.classList.add("vu");
+    await attendre(2400);
+    cacherCurseur(demo);
+    if (calme) return;
+  }
+}
+
+/* ---------- CyberGuard ---------- */
+async function scan(el) {
+  const demo = el.closest(".demo");
+  const appareils = [
+    ["box", "192.168.1.1", "22, 80", "bas", 82, 30],
+    ["PC", "192.168.1.12", "445", "moyen", 30, 44],
+    ["caméra", "192.168.1.23", "23 telnet", "haut", 88, 84],
+    ["téléphone", "192.168.1.40", "aucun", "bas", 40, 92],
+  ];
+  const ul = el.querySelector("ul");
+  const titre = el.querySelector(".scan-titre");
+  const points = el.querySelector(".r-points");
+  const radar = el.querySelector(".radar");
+  const panneau = document.createElement("div");
+  panneau.className = "ia-panneau";
+  el.appendChild(panneau);
+  for (let passe = 0; passe < TOURS; passe++) {
+    ul.innerHTML = ""; points.innerHTML = ""; panneau.classList.remove("vu");
+    titre.textContent = "Scan du réseau local…";
+    radar.classList.add("actif");
+    for (const [nom, ip, ports, risque, x, y] of appareils) {
+      await attendre(600);
+      const c = document.createElementNS(NS, "circle");
+      c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("r", 4);
+      c.setAttribute("class", `p-${risque}`);
+      points.appendChild(c);
+      const li = document.createElement("li");
+      li.innerHTML = `<span><b>${nom}</b> ${ip}</span><span>${ports} <b class="risque ${risque}">${risque}</b></span>`;
+      ul.appendChild(li);
+      await attendre(40);
+      li.classList.add("vu");
+    }
+    radar.classList.remove("actif");
+    titre.textContent = "4 appareils · 1 risque élevé";
+    await attendre(500);
+    // on clique sur l'appareil à risque : l'IA locale explique
+    const camera = ul.children[2];
+    await viser(demo, camera, 0.3);
+    await cliquer(demo);
+    camera.classList.add("choisi");
+    panneau.innerHTML = '<p class="pp-titre">Explication · IA locale</p><p class="ia-texte"></p>';
+    panneau.classList.add("vu");
+    cacherCurseur(demo);
+    await taper(panneau.querySelector(".ia-texte"), "Le port 23 (telnet) envoie les mots de passe en clair sur le réseau. Conseil : désactiver telnet sur la caméra.", 16);
+    await attendre(2600);
+    camera.classList.remove("choisi");
+    if (calme) return;
+  }
+}
+
+/* ---------- Net-Cat : trois clients connectés au même serveur ---------- */
+async function chat(el) {
+  const [lea, seb] = [...el.querySelectorAll(".lignes")];
+  const serveur = el.closest(".demo").querySelector(".serveur");
+  const ecrire = async (zone, classe, texte) => {
+    const p = document.createElement("p");
+    p.className = `l ${classe}`;
+    zone.appendChild(p);
+    if (classe === "moi") await taper(p, texte, 30); else p.textContent = texte;
+    while (zone.children.length > 8) zone.firstChild.remove();
+  };
+  const ecritEnCours = async (zone, nom) => {
+    const p = document.createElement("p");
+    p.className = "l sys ecrit";
+    p.textContent = `${nom} écrit…`;
+    zone.appendChild(p);
+    await attendre(700);
+    p.remove();
+  };
+  for (let passe = 0; passe < TOURS; passe++) {
+    lea.innerHTML = ""; seb.innerHTML = "";
+    serveur.textContent = "serveur :8989 · 2 clients connectés";
+    await ecrire(lea, "sys", "connectée · salon général");
+    await ecrire(seb, "sys", "connecté · salon général");
+    await attendre(300);
+    await ecrire(lea, "moi", "salut !");
+    await ecrire(seb, "", "[léa] salut !");
+    await ecritEnCours(lea, "seb");
+    await ecrire(seb, "moi", "/create projet-go");
+    await ecrire(seb, "sys", "salon projet-go créé");
+    await ecrire(lea, "sys", "nouveau salon : projet-go");
+    await ecrire(lea, "moi", "/join projet-go");
+    await ecrire(seb, "sys", "léa a rejoint projet-go");
+    await attendre(400);
+    serveur.textContent = "serveur :8989 · 3 clients connectés";
+    serveur.classList.add("flash");
+    await ecrire(seb, "sys", "max a rejoint projet-go");
+    await ecrire(lea, "sys", "max a rejoint projet-go");
+    await attendre(300);
+    serveur.classList.remove("flash");
+    await ecritEnCours(seb, "léa");
+    await ecrire(lea, "moi", "on teste à 3 ?");
+    await ecrire(seb, "", "[léa] on teste à 3 ?");
+    await attendre(2600);
+    if (calme) return;
+  }
+}
+
+/* ---------- Lem-in : exploration du graphe, puis les fourmis ---------- */
+async function lemin(svg) {
+  const aretes = [...svg.querySelectorAll(".aretes line")];
+  const salles = [...svg.querySelectorAll(".salles circle")];
+  const g = svg.querySelector(".pions");
+  const tour = svg.querySelector(".tour");
+  const haut = [[30, 80], [110, 35], [190, 35], [270, 80]];
+  const bas = [[30, 80], [110, 125], [190, 125], [270, 80]];
+  const fourmis = [];
+  for (let i = 0; i < 4; i++) {
+    const grp = document.createElementNS(NS, "g");
+    grp.setAttribute("class", "fourmi cache");
+    const c = document.createElementNS(NS, "circle");
+    c.setAttribute("r", 6);
+    const t = document.createElementNS(NS, "text");
+    t.textContent = i + 1;
+    t.setAttribute("text-anchor", "middle"); t.setAttribute("dy", "3");
+    grp.append(c, t);
+    g.appendChild(grp);
+    fourmis.push({ grp, chemin: i % 2 ? bas : haut, depart: Math.floor(i / 2) });
+  }
+  const placer = (f, p) => { const [x, y] = f.chemin[p]; f.grp.style.transform = `translate(${x}px, ${y}px)`; };
+  // exploration en largeur : Start, puis ses voisins, puis les suivants, puis End
+  const niveaux = [{ s: [0], a: [] }, { s: [1, 2], a: [0, 1] }, { s: [3, 4], a: [2, 3] }, { s: [5], a: [4, 5] }];
+  for (let passe = 0; passe < TOURS; passe++) {
+    aretes.forEach((a) => a.classList.remove("explore", "chemin"));
+    salles.forEach((s) => s.classList.remove("visite", "front"));
+    fourmis.forEach((f) => { f.grp.classList.add("cache"); placer(f, 0); });
+    tour.textContent = "recherche des chemins…";
+    for (const n of niveaux) {
+      salles.forEach((s) => s.classList.remove("front"));
+      n.a.forEach((i) => aretes[i].classList.add("explore"));
+      n.s.forEach((i) => salles[i].classList.add("visite", "front"));
+      await attendre(600);
+    }
+    salles.forEach((s) => s.classList.remove("front"));
+    [0, 1, 2, 3, 4, 5].forEach((i) => aretes[i].classList.add("chemin"));
+    tour.textContent = "2 chemins sans croisement trouvés";
+    await attendre(900);
+    fourmis.forEach((f) => f.grp.classList.remove("cache"));
+    for (let t = 1; t <= 4; t++) {
+      tour.textContent = `tour ${t}`;
+      fourmis.forEach((f) => placer(f, Math.min(Math.max(t - f.depart, 0), 3)));
+      await attendre(800);
+    }
+    tour.textContent = "4 fourmis arrivées en 4 tours";
+    await attendre(2200);
+    if (calme) return;
+  }
+}
+
+/* ---------- Discussion en boucle dans le bas de page ---------- */
+async function discussion(scene) {
+  const fil = scene.querySelector(".fil");
+  const echanges = [
+    ["eux", "Bonjour Sébastien, votre profil nous intéresse"],
+    ["moi", "Merci ! Je suis disponible dès maintenant"],
+    ["eux", "Vous codez avec quels langages ?"],
+    ["moi", "Surtout Go et JavaScript, avec SQL"],
+    ["eux", "Et le rythme de l'alternance ?"],
+    ["moi", "3 semaines en entreprise, 1 semaine à l'école"],
+    ["eux", "Vous avez déjà un projet utilisé en vrai ?"],
+    ["moi", "Oui, une appli de planning pour un salon"],
+    ["eux", "On peut s'appeler cette semaine ?"],
+    ["moi", "Avec plaisir : 06 64 06 27 75"],
+  ];
+  const ajouter = (classe, html) => {
+    const d = document.createElement("div");
+    d.className = `msg ${classe}`;
+    d.innerHTML = html;
+    fil.appendChild(d);
+    while (fil.children.length > 5) fil.firstChild.remove();
+    return d;
+  };
+  if (calme) { echanges.slice(0, 4).forEach(([q, t]) => ajouter(q, t)); return; }
+  for (;;) {
+    for (const [qui, texte] of echanges) {
+      const points = ajouter(`${qui} ecrit`, "<i></i><i></i><i></i>");
+      await attendre(qui === "eux" ? 1100 : 900);
+      points.remove();
+      ajouter(qui, texte);
+      await attendre(1500);
+    }
+    await attendre(1500);
+    fil.innerHTML = "";
+  }
+}
+quandVisible(document.getElementById("scene-contact"), discussion);
+quandVisible(document.getElementById("demo-planning"), planning);
+quandVisible(document.getElementById("demo-graphql"), graphql);
+quandVisible(document.getElementById("demo-scan"), scan);
+quandVisible(document.getElementById("demo-chat"), chat);
+quandVisible(document.getElementById("demo-lemin"), lemin);

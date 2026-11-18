@@ -1,221 +1,323 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sébastien Beck - Portfolio Développeur</title>
-    <meta
-      name="description"
-      content="Portfolio de Sébastien Beck, développeur en formation à la recherche d'une alternance web / backend. Projets Go présentés avec animations."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
-    />
-    <link rel="icon" href="favicon.ico" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="page-shell">
-      <div class="orb orb-a"></div>
-      <div class="orb orb-b"></div>
-      <div class="orb orb-c"></div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sébastien Beck – Développeur full stack</title>
+  <meta name="description" content="Sébastien Beck, développeur full stack (Go, JavaScript, React, SQL) en recherche d'alternance à Rouen, Beauvais, Lille ou Paris. Disponible dès maintenant.">
+  <meta name="author" content="Sébastien Beck">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=12">
+</head>
+<body>
 
-      <div class="container">
-        <header class="site-header glass">
-          <div>
-            <p class="eyebrow" id="portfolio-label"></p>
-            <h1 class="site-title" id="site-name"></h1>
-          </div>
-          <div class="header-actions">
-            <a
-              class="button button-gradient"
-              href="https://github.com/sebastien1000"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    fill="currentColor"
-                    d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.88c-2.77.6-3.36-1.18-3.36-1.18-.46-1.14-1.11-1.44-1.11-1.44-.9-.62.07-.61.07-.61 1 .07 1.52 1.02 1.52 1.02.88 1.51 2.31 1.07 2.87.82.09-.65.35-1.08.63-1.33-2.21-.25-4.53-1.1-4.53-4.93 0-1.09.39-1.98 1.03-2.68-.11-.25-.45-1.26.1-2.62 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.84a9.6 9.6 0 0 1 2.5.34c1.9-1.29 2.74-1.02 2.74-1.02.56 1.36.21 2.37.11 2.62.64.7 1.02 1.59 1.02 2.68 0 3.84-2.32 4.68-4.54 4.92.36.31.67.92.67 1.86v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"
-                  />
-                </svg>
-              </span>
-              GitHub
-            </a>
-            <a
-              class="button button-gradient"
-              href="cv.html"
-              target="_blank"
-              rel="noreferrer"
-              id="cv-link-top"
-            >
-              <span class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    fill="currentColor"
-                    d="M4 4h16v16H4zm2 3v10h12V7zm2 2h8v2H8zm0 4h5v2H8z"
-                  />
-                </svg>
-              </span>
-              <span id="cv-top-label"></span>
-            </a>
-            <div class="language-switch glass-dark" aria-label="Language">
-              <button class="lang-btn is-active" data-lang="fr" type="button">FR</button>
-              <button class="lang-btn" data-lang="en" type="button">EN</button>
-            </div>
-          </div>
-        </header>
+<header class="haut">
+  <div class="conteneur haut-grille">
+    <div class="ident">
+      <p class="statut"><span class="point" aria-hidden="true"></span>Disponible dès maintenant pour une alternance</p>
+      <h1><span class="fin">Sébastien</span> Beck</h1>
+      <p class="poste">Développeur full stack · en recherche d'alternance</p>
+      <p class="accroche">Go, JavaScript, React et SQL. Une appli déjà utilisée par un vrai client, et un intérêt fort pour la sécurité du code.</p>
+      <div class="actions">
+        <a class="bouton principal" href="CV_Sebastien_Beck.pdf" download>Télécharger mon CV</a>
+        <a class="bouton" href="tel:+33664062775">Appeler · 06 64 06 27 75</a>
+      </div>
+      <p class="liens-discrets"><a href="https://www.linkedin.com/in/sebastien-beck-dev-web" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/sebastien1000" target="_blank" rel="noreferrer">GitHub ↗</a></p>
+    </div>
+    <img class="photo" src="photo.jpg" alt="Photo de Sébastien Beck" width="350" height="350">
+  </div>
+  <div class="conteneur cles">
+    <p><b>Alternance</b> 1 à 2 ans</p>
+    <p><b>Rythme</b> 3 semaines en entreprise, 1 semaine à l'école</p>
+    <p><b>Diplôme</b> RNCP 6, niveau Bac+3/4 · Zone01 Rouen</p>
+    <p><b>Mobilité</b> Rouen, Beauvais, Lille, Paris</p>
+  </div>
+</header>
 
-        <section class="hero">
-          <div class="hero-copy">
-            <div class="hero-badge glass">
-              <span class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    fill="currentColor"
-                    d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5zm9-2.27L6.5 8 12 10.75 17.5 8zm-6 4.36v5.45l5 2.5v-5.45zm7 7.95 5-2.5V9.59l-5 2.5z"
-                  />
-                </svg>
-              </span>
-              <span id="hero-badge"></span>
-            </div>
-            <h2 class="hero-title">
-              <span id="hero-title-start"></span>
-              <span class="gradient-text" id="hero-title-highlight"></span>.
-            </h2>
-            <p class="hero-text" id="hero-text"></p>
-            <div class="tag-list" id="tag-list"></div>
-            <div class="stats-grid" id="stats-grid"></div>
-          </div>
+<main>
 
-          <div class="hero-visual-frame">
-            <div class="hero-visual glass" id="hero-visual"></div>
+  <section class="conteneur bloc" aria-labelledby="t-apport">
+    <h2 id="t-apport">Ce que j'apporte</h2>
+    <div class="atouts">
+      <article class="majeur">
+        <h3>Une appli déjà utilisée par un vrai client</h3>
+        <p>Planning Salon sert à un salon pour gérer ses rendez-vous : je sais livrer quelque chose qui marche pour de vrai.</p>
+      </article>
+      <article>
+        <h3>6 ans d'expérience en entreprise</h3>
+        <p>Chez Leroy Merlin : travail en équipe, priorités à gérer, problèmes à régler avec les autres services.</p>
+      </article>
+      <article>
+        <h3>De l'autonomie</h3>
+        <p>À Zone01, il n'y a pas de cours magistraux : je cherche, je teste et je demande de l'aide à mes pairs quand il le faut.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="conteneur bloc" aria-labelledby="t-projets">
+    <h2 id="t-projets">Mes projets</h2>
+    <p class="intro">Tout le monde ne lit pas du code, et un visuel parle plus. Ici, chaque projet est montré en animation : on comprend ce qu'il fait en quelques secondes, même sans bagage technique.</p>
+
+    <article class="projet vedette">
+      <div class="demo" aria-hidden="true" data-titre="planning-salon · vue admin">
+        <div class="planning" id="demo-planning">
+          <div class="pl-barre"><span class="pl-vue">Vue : administratrice</span><span class="pl-toast"></span></div>
+          <div class="pl-grille">
+            <span></span><span class="pl-j">Lun</span><span class="pl-j">Mar</span><span class="pl-j">Mer</span>
+            <span class="pl-h">9 h</span><i></i><i></i><i></i>
+            <span class="pl-h">10 h</span><i></i><i></i><i></i>
+            <span class="pl-h">11 h</span><i></i><i></i><i></i>
+            <span class="pl-h">14 h</span><i></i><i></i><i></i>
           </div>
-        </section>
+        </div>
+        <p class="legende" id="pl-legende">Illustration : la base refuse une double réservation, puis chaque collaboratrice ne voit que ses clientes</p>
+      </div>
+      <div class="texte">
+        <p class="badge">Utilisée par un vrai salon</p>
+        <h3>Planning Salon</h3>
+        <p class="meta">JavaScript · Supabase · PostgreSQL · Vercel · seul · démo sur demande</p>
+        <ul>
+          <li>Une appli de gestion pour un salon : rendez-vous, fiches clientes, absences et prestations, sur ordinateur et sur téléphone.</li>
+          <li>Chaque collaboratrice ne voit que ses clientes, et c'est la base de données (règles RLS) qui l'impose.</li>
+          <li>La base bloque les doubles réservations d'une même salle.</li>
+        </ul>
+        <p class="lien-note">Le salon est un vrai client : le code et l'appli ne sont pas publics. Je peux faire une démonstration en entretien.</p>
+      </div>
+    </article>
+
+    <article class="projet">
+      <div class="demo" aria-hidden="true" data-titre="tableau de bord · graphql">
+        <div class="gq" id="demo-graphql">
+          <pre class="gq-code"><code></code></pre>
+          <svg class="graph" viewBox="0 0 300 130">
+            <line x1="10" y1="120" x2="290" y2="120" class="axe"/>
+            <g class="barres"></g>
+            <polyline class="courbe" points=""/>
+          </svg>
+        </div>
+        <p class="legende">Illustration : des statistiques dessinées en SVG, sans bibliothèque</p>
+      </div>
+      <div class="texte">
+        <h3>Tableau de bord GraphQL</h3>
+        <p class="meta">JavaScript natif · GraphQL · JWT · SVG · Vercel · seul</p>
+        <ul>
+          <li>Connexion à l'API de Zone01 avec un jeton JWT.</li>
+          <li>Récupération de mes données en GraphQL, puis affichage de mes statistiques avec des graphiques SVG faits à la main.</li>
+        </ul>
+        <p class="liens"><a href="https://graph-ql-rho-azure.vercel.app" target="_blank" rel="noreferrer">Voir la démo ↗</a><a href="https://github.com/sebastien1000/graphQL" target="_blank" rel="noreferrer">Voir le code ↗</a></p>
+      </div>
+    </article>
+
+    <article class="projet">
+      <div class="demo" aria-hidden="true" data-titre="cyberguard · localhost">
+        <div class="scan" id="demo-scan">
+          <svg class="radar" viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="56" class="r-cercle"/><circle cx="60" cy="60" r="36" class="r-cercle"/><circle cx="60" cy="60" r="16" class="r-cercle"/>
+            <g class="r-balai"><path d="M60 60 L60 4 A56 56 0 0 1 108 32 Z"/></g>
+            <g class="r-points"></g>
+          </svg>
+          <div class="scan-liste">
+            <p class="scan-titre">Scan du réseau local…</p>
+            <ul></ul>
+          </div>
+        </div>
+        <p class="legende">Illustration : des appareils trouvés et leur niveau de risque</p>
+      </div>
+      <div class="texte">
+        <h3>CyberGuard</h3>
+        <p class="meta">Go · HTML/CSS/JavaScript · YAML · Ollama · tests unitaires · seul</p>
+        <ul>
+          <li>Un assistant de sécurité qui scanne le réseau de la maison, repère les appareils et les ports ouverts, et donne un niveau de risque.</li>
+          <li>Les résultats sont expliqués en langage simple par une IA qui tourne sur le PC (Ollama). L'interface est protégée contre les attaques XSS et CSRF.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="projet">
+      <div class="demo" aria-hidden="true" data-titre="net-cat · terminal">
+        <p class="serveur">serveur :8989</p>
+        <div class="chat" id="demo-chat">
+          <div class="terminal"><p class="t-titre">client : léa</p><div class="lignes"></div></div>
+          <div class="terminal"><p class="t-titre">client : seb</p><div class="lignes"></div></div>
+        </div>
+        <p class="legende">Illustration : plusieurs personnes dans des salons de chat</p>
+      </div>
+      <div class="texte">
+        <h3>Net-Cat</h3>
+        <p class="meta">Go · TCP · goroutines · en binôme</p>
+        <ul>
+          <li>Un serveur de chat recodé en Go : plusieurs personnes connectées en même temps.</li>
+          <li>Des salons qu'on crée et qu'on rejoint par commandes (/create, /join, /rooms).</li>
+        </ul>
+        <p class="liens"><a href="https://github.com/sebastien1000/net-cat" target="_blank" rel="noreferrer">Voir le code ↗</a></p>
+      </div>
+    </article>
+
+    <article class="projet">
+      <div class="demo" aria-hidden="true" data-titre="lem-in · simulation">
+        <svg class="fourmis" id="demo-lemin" viewBox="0 0 300 160">
+          <g class="aretes">
+            <line x1="30" y1="80" x2="110" y2="35"/><line x1="30" y1="80" x2="110" y2="125"/>
+            <line x1="110" y1="35" x2="190" y2="35"/><line x1="110" y1="125" x2="190" y2="125"/>
+            <line x1="190" y1="35" x2="270" y2="80"/><line x1="190" y1="125" x2="270" y2="80"/>
+            <line x1="110" y1="35" x2="110" y2="125" class="faible"/>
+          </g>
+          <g class="salles">
+            <circle cx="30" cy="80" r="11"/><circle cx="110" cy="35" r="9"/><circle cx="110" cy="125" r="9"/>
+            <circle cx="190" cy="35" r="9"/><circle cx="190" cy="125" r="9"/><circle cx="270" cy="80" r="11"/>
+          </g>
+          <text x="30" y="106" class="etiq">Start</text><text x="270" y="106" class="etiq">End</text>
+          <text x="150" y="152" class="tour"></text>
+          <g class="pions"></g>
+        </svg>
+        <p class="legende">Illustration : les fourmis prennent deux chemins en parallèle</p>
+      </div>
+      <div class="texte">
+        <h3>Lem-in</h3>
+        <p class="meta">Go · graphes · recherche de chemins · tests automatisés</p>
+        <ul>
+          <li>Un programme qui fait traverser une fourmilière à des fourmis, en choisissant les meilleurs chemins pour arriver le plus vite possible.</li>
+        </ul>
+        <p class="liens"><a href="https://github.com/sebastien1000/lem-in" target="_blank" rel="noreferrer">Voir le code ↗</a></p>
+      </div>
+    </article>
+
+    <article class="projet-encours">
+      <span class="point" aria-hidden="true"></span>
+      <div>
+        <p class="badge">Projet en cours</p>
+        <h3>ForTeam</h3>
+        <p>Un assistant d'aide basé sur l'IA, que je construis en équipe.</p>
+      </div>
+    </article>
+
+    <p class="aussi"><b>Aussi :</b> Mini-cyber, une petite boîte à outils de sécurité en Python/Flask, avec tests et intégration continue GitHub Actions.</p>
+  </section>
+
+
+  <section class="conteneur bloc" aria-labelledby="t-cyber">
+    <h2 id="t-cyber">Cybersécurité</h2>
+    <p class="intro">Le soir, je me forme à la défense des systèmes : lire des logs, analyser du trafic réseau, retrouver le déroulé d'une attaque. Ça m'aide à écrire du code plus sûr.</p>
+    <div class="en-cours">
+      <span class="point" aria-hidden="true"></span>
+      <p><b>En ce moment</b> Je pousse mon apprentissage en cybersécurité : je suis un parcours <b>Blue Team</b> (analyse de logs, SIEM, détection et investigation d'attaques).</p>
+    </div>
+    <div class="cyber">
+      <article class="cy-carte cy-large">
+        <h3>Enquêtes sur de vraies attaques</h3>
+        <p class="cy-source">CyberDefenders · labs Blue Team réussis</p>
+        <ul class="labs">
+          <li><b>Hammered</b><span>analyse de logs Linux</span></li>
+          <li><b>Tomcat Takeover</b><span>analyse réseau avec Wireshark</span></li>
+          <li><b>JetBrains</b><span>lab Blue Team</span></li>
+          <li><b>PoisonedCredentials</b><span>lab Blue Team</span></li>
+        </ul>
+      </article>
+      <article class="cy-carte">
+        <h3>Mon lab à la maison</h3>
+        <p>Un SIEM Wazuh installé dans Docker sur mon PC : je collecte les journaux, je cherche des alertes et je les relie aux techniques MITRE ATT&amp;CK.</p>
+        <p class="cy-outils">Wazuh · Docker · Sigma · YARA · MITRE ATT&amp;CK</p>
+      </article>
+      <article class="cy-carte">
+        <h3>Formations suivies</h3>
+        <ul class="badges">
+          <li><span class="b-src">TryHackMe</span>What is Networking?</li>
+          <li><span class="b-src">TryHackMe</span>Networking Concepts</li>
+          <li><span class="b-src">TryHackMe</span>Network Traffic Basics</li>
+          <li><span class="b-src">TryHackMe</span>DNS in Detail</li>
+          <li><span class="b-src">Hack The Box Academy</span>Linux Fundamentals</li>
+        </ul>
+      </article>
+    </div>
+    <p class="aussi"><b>Autres badges :</b> IBM SkillsBuild (Explore Emerging Tech, agents IA), Microsoft Learn (GitHub Copilot), DataCamp (Introduction to Git).</p>
+  </section>
+
+  <section class="conteneur bloc" aria-labelledby="t-parcours">
+    <h2 id="t-parcours">De la logistique au code</h2>
+    <p class="intro">Un parcours pas en ligne droite, mais toujours concret : des flux à gérer, des problèmes à régler, et maintenant du code.</p>
+    <ol class="route">
+      <li><span class="r-date">2007 – 2014</span><b>Pizzaïolo</b><p>Stocks, commandes fournisseurs, prix de revient</p></li>
+      <li><span class="r-date">2015 – 2018</span><b>Sécurité et production</b><p>Site SEVESO (Butagaz), Délifrance, Imerys Toiture</p></li>
+      <li><span class="r-date">2019 – 2025</span><b>Agent logistique · Leroy Merlin</b><p>Flux, priorités, WMS LOGIN, anomalies</p></li>
+      <li><span class="r-date">2025 – 2027</span><b>Zone01 Rouen</b><p>Concepteur développeur d'applications, RNCP 6 (Bac+3/4)</p></li>
+      <li class="maintenant"><span class="r-date">Aujourd'hui</span><b>En recherche d'alternance</b><p>Développeur full stack, 1 à 2 ans</p></li>
+    </ol>
+  </section>
+
+  <section class="conteneur bloc" aria-labelledby="t-outils">
+    <h2 id="t-outils">Ma boîte à outils</h2>
+    <p class="intro">Les outils que j'utilise, et les projets où je m'en suis servi.</p>
+    <div class="outils">
+      <article><p class="logos"><img src="https://cdn.simpleicons.org/go" alt="" width="24" height="24" loading="lazy"></p><h3>Go</h3><p>CyberGuard · Net-Cat · Lem-in</p></article>
+      <article><p class="logos"><img src="https://cdn.simpleicons.org/javascript" alt="" width="24" height="24" loading="lazy"></p><h3>JavaScript</h3><p>Planning Salon · Tableau de bord GraphQL</p></article>
+      <article><p class="logos"><img src="https://cdn.simpleicons.org/postgresql" alt="" width="24" height="24" loading="lazy"></p><h3>SQL · PostgreSQL</h3><p>Planning Salon : tables, règles RLS, contraintes</p></article>
+      <article><p class="logos"><img src="https://cdn.simpleicons.org/supabase" alt="" width="24" height="24" loading="lazy"><img src="https://cdn.simpleicons.org/vercel" alt="" width="24" height="24" loading="lazy"></p><h3>Supabase · Vercel</h3><p>Planning Salon (en ligne pour un vrai salon)</p></article>
+      <article><p class="logos"><img src="https://cdn.simpleicons.org/graphql" alt="" width="24" height="24" loading="lazy"><img src="https://cdn.simpleicons.org/jsonwebtokens" alt="" width="24" height="24" loading="lazy"></p><h3>GraphQL · JWT</h3><p>Tableau de bord GraphQL</p></article>
+      <article><p class="logos"><img src="https://cdn.simpleicons.org/docker" alt="" width="24" height="24" loading="lazy"><img src="https://cdn.simpleicons.org/linux" alt="" width="24" height="24" loading="lazy"></p><h3>Docker · Linux</h3><p>Mon lab Wazuh, mon poste de travail</p></article>
+      <article><p class="logos"><img src="https://cdn.simpleicons.org/git" alt="" width="24" height="24" loading="lazy"><img src="https://cdn.simpleicons.org/githubactions" alt="" width="24" height="24" loading="lazy"></p><h3>Git · GitHub Actions</h3><p>Tous mes projets · intégration continue de Mini-cyber</p></article>
+      <article><p class="logos"><img src="https://cdn.simpleicons.org/react" alt="" width="24" height="24" loading="lazy"></p><h3>React</h3><p>Projet public à venir</p></article>
+    </div>
+    <h3 class="sous-titre">Mes badges</h3>
+    <ul class="badges-logos">
+      <li><img src="https://cdn.simpleicons.org/tryhackme" alt="" width="24" height="24" loading="lazy"><div><b>TryHackMe</b><span>4 modules réseau : What is Networking?, Networking Concepts, Network Traffic Basics, DNS in Detail</span></div></li>
+      <li><img src="https://cdn.simpleicons.org/hackthebox" alt="" width="24" height="24" loading="lazy"><div><b>Hack The Box Academy</b><span>Linux Fundamentals</span></div></li>
+      <li><span class="mono-logo">CD</span><div><b>CyberDefenders</b><span>4 labs Blue Team : Hammered, Tomcat Takeover, JetBrains, PoisonedCredentials</span></div></li>
+      <li><span class="mono-logo">IBM</span><div><b>IBM SkillsBuild</b><span>Explore Emerging Tech, agents IA</span></div></li>
+      <li><span class="mono-logo">ML</span><div><b>Microsoft Learn</b><span>Présentation de GitHub Copilot</span></div></li>
+      <li><img src="https://cdn.simpleicons.org/datacamp" alt="" width="24" height="24" loading="lazy"><div><b>DataCamp</b><span>Introduction to Git</span></div></li>
+    </ul>
+    <h3 class="sous-titre">Je continue d'apprendre</h3>
+    <ul class="apprends">
+      <li><img src="https://cdn.simpleicons.org/rust/16202a" alt="" width="28" height="28" loading="lazy"><div><b>Rust</b><span>en cours d'apprentissage</span></div></li>
+      <li><span class="code-langue">EN</span><div><b>Anglais</b><span>technique, en progression</span></div></li>
+      <li><span class="code-langue">IA</span><div><b>Intelligence artificielle</b><span>je suis les nouveautés · Ollama, GitHub Copilot, agents IA</span></div></li>
+    </ul>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="t-contact">
+    <div class="conteneur contact-grille">
+      <div>
+        <p class="statut"><span class="point" aria-hidden="true"></span>Disponible dès maintenant</p>
+        <h2 id="t-contact">On en parle ?</h2>
+        <p>Je suis disponible dès maintenant pour une alternance de 1 à 2 ans. Un appel de 10 minutes suffit pour voir si mon profil vous correspond.</p>
+        <div class="actions">
+          <a class="bouton principal" href="tel:+33664062775">Appeler · 06 64 06 27 75</a>
+          <a class="bouton" href="mailto:beck.sebastien76220@gmail.com">M'écrire</a>
+        </div>
+        <p class="liens-discrets"><a href="CV_Sebastien_Beck.pdf" download>Télécharger mon CV ↓</a><a href="https://www.linkedin.com/in/sebastien-beck-dev-web" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/sebastien1000" target="_blank" rel="noreferrer">GitHub ↗</a></p>
+      </div>
+      <div class="scene" id="scene-contact" aria-hidden="true">
+        <div class="fil"></div>
+        <svg class="perso-svg" viewBox="120 170 200 150">
+          <g class="perso">
+            <path class="sweat" d="M150 320 C 150 262, 180 236, 220 236 C 260 236, 290 262, 290 320 Z"/>
+            <rect class="cou" x="210" y="218" width="20" height="22" rx="6"/>
+            <ellipse class="tete" cx="220" cy="196" rx="30" ry="34"/>
+            <path class="barbe" d="M206 214 Q220 232 234 214 Q228 222 220 222 Q212 222 206 214 Z"/>
+            <ellipse class="oreille" cx="190" cy="198" rx="5" ry="8"/><ellipse class="oreille" cx="250" cy="198" rx="5" ry="8"/>
+          </g>
+          <g class="pc">
+            <rect class="ecran" x="130" y="250" width="180" height="70" rx="10"/>
+            <rect class="logo" x="206" y="270" width="28" height="28" rx="7"/>
+            <text class="logo-t" x="220" y="289">SB</text>
+          </g>
+        </svg>
       </div>
     </div>
+  </section>
 
-    <main>
-      <section class="section container">
-        <div class="section-title">
-          <p class="eyebrow" id="projects-eyebrow"></p>
-          <h2 id="projects-title"></h2>
-          <p id="projects-text"></p>
-        </div>
+</main>
 
-        <div class="projects-layout">
-          <div class="project-list" id="project-list"></div>
-          <article class="project-detail card glass">
-            <div class="project-demo-shell" id="project-demo"></div>
-            <div class="project-detail-head">
-              <div>
-                <h3 id="detail-title"></h3>
-                <p id="detail-summary"></p>
-              </div>
-              <a
-                class="button button-gradient"
-                id="detail-code-link"
-                href="#"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span class="icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path
-                      fill="currentColor"
-                      d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14zm5 16v2H5V7h2v12z"
-                    />
-                  </svg>
-                </span>
-                <span id="detail-code-label"></span>
-              </a>
-            </div>
-            <div class="point-grid" id="detail-points"></div>
-          </article>
-        </div>
-      </section>
+<footer class="pied">
+  <div class="conteneur pied-grille">
+    <p class="marque"><span class="logo-sb" aria-hidden="true">SB</span>Sébastien Beck · Beauvoir-en-Lyons (76) · permis B</p>
+    <nav aria-label="Navigation de bas de page"><a href="#t-projets">Projets</a><a href="#t-cyber">Cybersécurité</a><a href="#contact">Contact</a></nav>
+  </div>
+</footer>
 
-      <section class="section container">
-        <div class="info-grid" id="info-grid"></div>
-      </section>
-
-      <section class="section container">
-        <div class="feature-box glass">
-          <div class="feature-head">
-            <div>
-              <p class="eyebrow">GitHub</p>
-              <h2 id="github-title"></h2>
-              <p id="github-text"></p>
-            </div>
-            <a
-              class="button button-gradient"
-              href="https://github.com/sebastien1000"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    fill="currentColor"
-                    d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.88c-2.77.6-3.36-1.18-3.36-1.18-.46-1.14-1.11-1.44-1.11-1.44-.9-.62.07-.61.07-.61 1 .07 1.52 1.02 1.52 1.02.88 1.51 2.31 1.07 2.87.82.09-.65.35-1.08.63-1.33-2.21-.25-4.53-1.1-4.53-4.93 0-1.09.39-1.98 1.03-2.68-.11-.25-.45-1.26.1-2.62 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.84a9.6 9.6 0 0 1 2.5.34c1.9-1.29 2.74-1.02 2.74-1.02.56 1.36.21 2.37.11 2.62.64.7 1.02 1.59 1.02 2.68 0 3.84-2.32 4.68-4.54 4.92.36.31.67.92.67 1.86v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"
-                  />
-                </svg>
-              </span>
-              <span id="github-button-label"></span>
-            </a>
-          </div>
-          <div class="github-links" id="github-links"></div>
-        </div>
-      </section>
-
-      <section class="section section-last container">
-        <div class="feature-box feature-box-contact glass">
-          <p class="eyebrow">Contact</p>
-          <h2 id="contact-title"></h2>
-          <p id="contact-text"></p>
-          <div class="contact-actions">
-            <a
-              class="button button-gradient"
-              href="cv.html"
-              target="_blank"
-              rel="noreferrer"
-              id="cv-link-bottom"
-            >
-              <span class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    fill="currentColor"
-                    d="M4 4h16v16H4zm2 3v10h12V7zm2 2h8v2H8zm0 4h5v2H8z"
-                  />
-                </svg>
-              </span>
-              <span id="contact-cv-label"></span>
-            </a>
-            <a
-              class="button button-gradient"
-              href="https://github.com/sebastien1000"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span class="icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    fill="currentColor"
-                    d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.88c-2.77.6-3.36-1.18-3.36-1.18-.46-1.14-1.11-1.44-1.11-1.44-.9-.62.07-.61.07-.61 1 .07 1.52 1.02 1.52 1.02.88 1.51 2.31 1.07 2.87.82.09-.65.35-1.08.63-1.33-2.21-.25-4.53-1.1-4.53-4.93 0-1.09.39-1.98 1.03-2.68-.11-.25-.45-1.26.1-2.62 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.84a9.6 9.6 0 0 1 2.5.34c1.9-1.29 2.74-1.02 2.74-1.02.56 1.36.21 2.37.11 2.62.64.7 1.02 1.59 1.02 2.68 0 3.84-2.32 4.68-4.54 4.92.36.31.67.92.67 1.86v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"
-                  />
-                </svg>
-              </span>
-              GitHub
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <script src="script.js"></script>
-  </body>
+<script src="script.js?v=7"></script>
+</body>
 </html>
