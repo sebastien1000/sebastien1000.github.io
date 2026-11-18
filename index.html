@@ -10,7 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=12">
+  <link rel="stylesheet" href="styles.css?v=19">
+  <link rel="stylesheet" href="chat.css?v=10">
 </head>
 <body>
 
@@ -26,6 +27,11 @@
         <a class="bouton" href="tel:+33664062775">Appeler · 06 64 06 27 75</a>
       </div>
       <p class="liens-discrets"><a href="https://www.linkedin.com/in/sebastien-beck-dev-web" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/sebastien1000" target="_blank" rel="noreferrer">GitHub ↗</a></p>
+      <div class="mode" role="group" aria-label="Comment voulez-vous découvrir mon profil ?">
+        <span>Découvrir mon profil :</span>
+        <button type="button" class="mode-btn actif" data-mode="classique">Vue classique</button>
+        <button type="button" class="mode-btn" data-mode="chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Discuter avec moi</button>
+      </div>
     </div>
     <img class="photo" src="photo.jpg" alt="Photo de Sébastien Beck" width="350" height="350">
   </div>
@@ -61,7 +67,7 @@
     <h2 id="t-projets">Mes projets</h2>
     <p class="intro">Tout le monde ne lit pas du code, et un visuel parle plus. Ici, chaque projet est montré en animation : on comprend ce qu'il fait en quelques secondes, même sans bagage technique.</p>
 
-    <article class="projet vedette">
+    <article class="projet vedette" id="p-planning">
       <div class="demo" aria-hidden="true" data-titre="planning-salon · vue admin">
         <div class="planning" id="demo-planning">
           <div class="pl-barre"><span class="pl-vue">Vue : administratrice</span><span class="pl-toast"></span></div>
@@ -88,7 +94,7 @@
       </div>
     </article>
 
-    <article class="projet">
+    <article class="projet" id="p-graphql">
       <div class="demo" aria-hidden="true" data-titre="tableau de bord · graphql">
         <div class="gq" id="demo-graphql">
           <pre class="gq-code"><code></code></pre>
@@ -111,7 +117,7 @@
       </div>
     </article>
 
-    <article class="projet">
+    <article class="projet" id="p-cyberguard">
       <div class="demo" aria-hidden="true" data-titre="cyberguard · localhost">
         <div class="scan" id="demo-scan">
           <svg class="radar" viewBox="0 0 120 120">
@@ -136,7 +142,7 @@
       </div>
     </article>
 
-    <article class="projet">
+    <article class="projet" id="p-netcat">
       <div class="demo" aria-hidden="true" data-titre="net-cat · terminal">
         <p class="serveur">serveur :8989</p>
         <div class="chat" id="demo-chat">
@@ -156,7 +162,7 @@
       </div>
     </article>
 
-    <article class="projet">
+    <article class="projet" id="p-lemin">
       <div class="demo" aria-hidden="true" data-titre="lem-in · simulation">
         <svg class="fourmis" id="demo-lemin" viewBox="0 0 300 160">
           <g class="aretes">
@@ -185,7 +191,7 @@
       </div>
     </article>
 
-    <article class="projet-encours">
+    <article class="projet-encours" id="p-forteam">
       <span class="point" aria-hidden="true"></span>
       <div>
         <p class="badge">Projet en cours</p>
@@ -291,20 +297,53 @@
       </div>
       <div class="scene" id="scene-contact" aria-hidden="true">
         <div class="fil"></div>
-        <svg class="perso-svg" viewBox="120 170 200 150">
-          <g class="perso">
-            <path class="sweat" d="M150 320 C 150 262, 180 236, 220 236 C 260 236, 290 262, 290 320 Z"/>
-            <rect class="cou" x="210" y="218" width="20" height="22" rx="6"/>
-            <ellipse class="tete" cx="220" cy="196" rx="30" ry="34"/>
-            <path class="barbe" d="M206 214 Q220 232 234 214 Q228 222 220 222 Q212 222 206 214 Z"/>
-            <ellipse class="oreille" cx="190" cy="198" rx="5" ry="8"/><ellipse class="oreille" cx="250" cy="198" rx="5" ry="8"/>
-          </g>
-          <g class="pc">
-            <rect class="ecran" x="130" y="250" width="180" height="70" rx="10"/>
-            <rect class="logo" x="206" y="270" width="28" height="28" rx="7"/>
-            <text class="logo-t" x="220" y="289">SB</text>
-          </g>
-        </svg>
+        <svg class="perso-avatar" viewBox="0 0 300 300" aria-hidden="true">
+  <defs>
+    <linearGradient id="av-peau2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6c7a6"/><stop offset="1" stop-color="#eab18f"/></linearGradient>
+    <linearGradient id="av-sweat2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3a52"/><stop offset="1" stop-color="#1c2738"/></linearGradient>
+  </defs>
+  <g class="corps">
+    <!-- sweat à capuche -->
+    <path fill="url(#av-sweat2)" d="M58 300 C 60 236, 98 206, 150 206 C 202 206, 240 236, 242 300 Z"/>
+    <path fill="#b9c0c7" d="M112 214 Q150 248 188 214 L180 204 Q150 230 120 204 Z"/>
+    <path fill="none" stroke="#0f151f" stroke-width="3" stroke-linecap="round" d="M130 222 Q127 248 126 270 M170 222 Q173 248 174 270"/>
+    <circle cx="126" cy="272" r="3.5" fill="#0f151f"/><circle cx="174" cy="272" r="3.5" fill="#0f151f"/>
+    <rect x="137" y="176" width="26" height="34" rx="11" fill="#e3a684"/>
+    <g class="tete">
+      <!-- oreilles -->
+      <circle cx="94" cy="132" r="13" fill="#eab18f"/><circle cx="206" cy="132" r="13" fill="#eab18f"/>
+      <circle cx="95" cy="133" r="6" fill="#dc9c7a"/><circle cx="205" cy="133" r="6" fill="#dc9c7a"/>
+      <!-- visage -->
+      <rect x="96" y="66" width="108" height="128" rx="54" fill="url(#av-peau2)"/>
+      <!-- cheveux courts châtains -->
+      <path fill="#5b4030" d="M96 118 C 92 80, 114 56, 150 56 C 186 56, 208 80, 204 118 C 200 102, 194 94, 186 90 C 182 98, 172 100, 164 92 C 158 100, 146 101, 138 93 C 130 100, 118 100, 112 92 C 104 98, 99 106, 96 118 Z"/>
+      <path fill="#6e4f3c" d="M118 64 C 132 56, 168 56, 182 64 C 170 62, 160 64, 150 70 C 140 64, 130 62, 118 64 Z"/>
+      <!-- sourcils -->
+      <path fill="none" stroke="#4a3426" stroke-width="5" stroke-linecap="round" d="M118 112 Q129 106 140 111 M160 111 Q171 106 182 112"/>
+      <!-- yeux -->
+      <g class="yeux">
+        <ellipse cx="130" cy="128" rx="9" ry="10" fill="#fff"/><ellipse cx="170" cy="128" rx="9" ry="10" fill="#fff"/>
+        <circle cx="131" cy="129" r="6" fill="#4f7391"/><circle cx="171" cy="129" r="6" fill="#4f7391"/>
+        <circle cx="131" cy="129" r="3" fill="#1b2028"/><circle cx="171" cy="129" r="3" fill="#1b2028"/>
+        <circle cx="133.5" cy="126.5" r="1.8" fill="#fff"/><circle cx="173.5" cy="126.5" r="1.8" fill="#fff"/>
+      </g>
+      <!-- lunettes -->
+      <g fill="none" stroke="#3a3f47" stroke-width="3">
+        <rect x="112" y="113" width="36" height="30" rx="11"/><rect x="152" y="113" width="36" height="30" rx="11"/>
+        <path d="M148 125 Q150 122 152 125 M112 124 L100 120 M188 124 L200 120"/>
+      </g>
+      <!-- joues -->
+      <ellipse cx="116" cy="154" rx="10" ry="6" fill="#f08d7c" opacity="0.35"/><ellipse cx="184" cy="154" rx="10" ry="6" fill="#f08d7c" opacity="0.35"/>
+      <!-- nez -->
+      <path fill="#e09f7c" d="M146 138 Q150 152 145 155 Q150 159 156 155 Q151 152 154 138 Z"/>
+      <!-- bouc -->
+      <path fill="#5b4030" d="M128 166 Q150 152 172 166 Q174 172 168 172 Q160 166 150 166 Q140 166 132 172 Q126 172 128 166 Z"/>
+      <path fill="#5b4030" d="M134 174 Q150 180 166 174 Q166 194 150 198 Q134 194 134 174 Z"/>
+      <!-- bouche souriante -->
+      <path class="bouche" fill="#7e3b33" d="M138 170 Q150 182 162 170 Q150 175 138 170 Z"/>
+    </g>
+  </g>
+<g class="portable"><path class="clavier" d="M54 300 L246 300 L230 284 L70 284 Z"/><rect class="capot" x="74" y="222" width="152" height="64" rx="9"/><rect class="sb" x="137" y="241" width="26" height="26" rx="7"/><text x="150" y="258">SB</text></g></svg>
       </div>
     </div>
   </section>
@@ -319,5 +358,6 @@
 </footer>
 
 <script src="script.js?v=7"></script>
+<script src="chat.js?v=10"></script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" class="avatar">
+  <defs>
+    <linearGradient id="av-peau" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6c7a6"/><stop offset="1" stop-color="#eab18f"/></linearGradient>
+    <linearGradient id="av-sweat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3a52"/><stop offset="1" stop-color="#1c2738"/></linearGradient>
+  </defs>
+  <g class="corps">
+    <!-- sweat à capuche -->
+    <path fill="url(#av-sweat)" d="M58 300 C 60 236, 98 206, 150 206 C 202 206, 240 236, 242 300 Z"/>
+    <path fill="#b9c0c7" d="M112 214 Q150 248 188 214 L180 204 Q150 230 120 204 Z"/>
+    <path fill="none" stroke="#0f151f" stroke-width="3" stroke-linecap="round" d="M130 222 Q127 248 126 270 M170 222 Q173 248 174 270"/>
+    <circle cx="126" cy="272" r="3.5" fill="#0f151f"/><circle cx="174" cy="272" r="3.5" fill="#0f151f"/>
+    <rect x="137" y="176" width="26" height="34" rx="11" fill="#e3a684"/>
+    <g class="tete">
+      <!-- oreilles -->
+      <circle cx="94" cy="132" r="13" fill="#eab18f"/><circle cx="206" cy="132" r="13" fill="#eab18f"/>
+      <circle cx="95" cy="133" r="6" fill="#dc9c7a"/><circle cx="205" cy="133" r="6" fill="#dc9c7a"/>
+      <!-- visage -->
+      <rect x="96" y="66" width="108" height="128" rx="54" fill="url(#av-peau)"/>
+      <!-- cheveux courts châtains -->
+      <path fill="#5b4030" d="M96 118 C 92 80, 114 56, 150 56 C 186 56, 208 80, 204 118 C 200 102, 194 94, 186 90 C 182 98, 172 100, 164 92 C 158 100, 146 101, 138 93 C 130 100, 118 100, 112 92 C 104 98, 99 106, 96 118 Z"/>
+      <path fill="#6e4f3c" d="M118 64 C 132 56, 168 56, 182 64 C 170 62, 160 64, 150 70 C 140 64, 130 62, 118 64 Z"/>
+      <!-- sourcils -->
+      <path fill="none" stroke="#4a3426" stroke-width="5" stroke-linecap="round" d="M118 112 Q129 106 140 111 M160 111 Q171 106 182 112"/>
+      <!-- yeux -->
+      <g class="yeux">
+        <ellipse cx="130" cy="128" rx="9" ry="10" fill="#fff"/><ellipse cx="170" cy="128" rx="9" ry="10" fill="#fff"/>
+        <circle cx="131" cy="129" r="6" fill="#4f7391"/><circle cx="171" cy="129" r="6" fill="#4f7391"/>
+        <circle cx="131" cy="129" r="3" fill="#1b2028"/><circle cx="171" cy="129" r="3" fill="#1b2028"/>
+        <circle cx="133.5" cy="126.5" r="1.8" fill="#fff"/><circle cx="173.5" cy="126.5" r="1.8" fill="#fff"/>
+      </g>
+      <!-- lunettes -->
+      <g fill="none" stroke="#3a3f47" stroke-width="3">
+        <rect x="112" y="113" width="36" height="30" rx="11"/><rect x="152" y="113" width="36" height="30" rx="11"/>
+        <path d="M148 125 Q150 122 152 125 M112 124 L100 120 M188 124 L200 120"/>
+      </g>
+      <!-- joues -->
+      <ellipse cx="116" cy="154" rx="10" ry="6" fill="#f08d7c" opacity="0.35"/><ellipse cx="184" cy="154" rx="10" ry="6" fill="#f08d7c" opacity="0.35"/>
+      <!-- nez -->
+      <path fill="#e09f7c" d="M146 138 Q150 152 145 155 Q150 159 156 155 Q151 152 154 138 Z"/>
+      <!-- bouc -->
+      <path fill="#5b4030" d="M128 166 Q150 152 172 166 Q174 172 168 172 Q160 166 150 166 Q140 166 132 172 Q126 172 128 166 Z"/>
+      <path fill="#5b4030" d="M134 174 Q150 180 166 174 Q166 194 150 198 Q134 194 134 174 Z"/>
+      <!-- bouche souriante -->
+      <path class="bouche" fill="#7e3b33" d="M138 170 Q150 182 162 170 Q150 175 138 170 Z"/>
+    </g>
+  </g>
+</svg>
