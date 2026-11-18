@@ -143,7 +143,7 @@
   scene.innerHTML = `
     <div class="sc-haut">
       <div class="sc-titres">
-        <p class="sc-titre">Portfolio de développeur <b>full stack</b>, orienté <em>cybersécurité</em></p>
+        <p class="sc-titre">Mon portfolio de développeur <b>full stack</b>, orienté <em>cybersécurité</em></p>
         <span class="sc-statut"><i></i>Sébastien est là, posez-lui une question</span>
       </div>
       <button type="button" class="sc-fermer">Vue classique</button>
