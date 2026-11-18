@@ -348,3 +348,23 @@ body.sc-actif { overflow: hidden; }
   .sc-perso { width: 80px; }
   .sc-bulle { font-size: 12px; padding: 8px 10px; margin-bottom: 4px; }
 }
+
+/* Téléphone : propositions de questions sur plusieurs lignes, centrées, sans toucher le personnage */
+@media (max-width: 760px) {
+  .sc-puces { flex-wrap: wrap; justify-content: center; overflow: visible; gap: 6px; padding: 10px 12px 2px; }
+  .sc-puces button { flex-shrink: 1; font-size: 13px; padding: 6px 11px; max-width: 100%; white-space: normal; }
+  .sc-plateau { overflow: hidden; padding-bottom: 6px; }
+}
+@media (max-width: 760px) and (max-height: 620px) {
+  .sc-puces button:nth-child(n+3) { display: none; }
+}
+
+/* Téléphone : le personnage et sa bulle ne sont jamais cachés.
+   S'il manque de la place, c'est le grand écran qui rapetisse (et défile). */
+@media (max-width: 760px) {
+  .sc-plateau { display: flex; flex-direction: column; overflow: visible; }
+  .sc-ecran-zone { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+  .sc-moniteur { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+  .sc-ecran { flex: 1 1 auto; height: auto; max-height: 34vh; min-height: 64px; overflow-y: auto; }
+  .sc-perso-zone { flex: none; }
+}
