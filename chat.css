@@ -302,3 +302,13 @@ body.sc-actif { overflow: hidden; }
 .e-badge-c.bientot > span:last-child { color: var(--sur-sombre-2); }
 .e-badge-c.bientot .e-badge-l { background: rgba(95, 211, 176, 0.15); color: #5fd3b0; font-size: 20px; }
 @keyframes sc-zoom { from { opacity: 0; transform: scale(0.4); } }
+
+/* Petite phrase de présentation en haut de la scène */
+.sc-titres { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.sc-titre { margin: 0; font-size: 22px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; color: var(--sur-sombre-2); }
+.sc-titre b { color: #fff; font-weight: 800; }
+.sc-titre em { position: relative; font-style: normal; font-weight: 800; color: #5fd3b0; white-space: nowrap; }
+.sc-titre em::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 3px; border-radius: 2px; background: #1f9d7a; transform-origin: left; animation: sc-trait 900ms var(--ease) 400ms both; }
+@keyframes sc-trait { from { transform: scaleX(0); } }
+@media (max-width: 600px) { .sc-titre { font-size: 16px; } }
+@media (prefers-reduced-motion: reduce) { .sc-titre em::after { animation: none; } }

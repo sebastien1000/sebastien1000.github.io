@@ -142,7 +142,10 @@
   scene.setAttribute("aria-label", "Discuter avec Sébastien");
   scene.innerHTML = `
     <div class="sc-haut">
-      <span class="sc-statut"><i></i>Sébastien est là · posez-lui une question</span>
+      <div class="sc-titres">
+        <p class="sc-titre">Portfolio de développeur <b>full stack</b>, orienté <em>cybersécurité</em></p>
+        <span class="sc-statut"><i></i>Sébastien est là, posez-lui une question</span>
+      </div>
       <button type="button" class="sc-fermer">Vue classique</button>
     </div>
     <div class="sc-plateau">
@@ -592,17 +595,22 @@
     setTimeout(() => cible.classList.remove("chat-surbrillance"), 2400);
   }
 
+  // La discussion s'ouvre dès l'arrivée ; si le visiteur choisit la vue classique, on s'en souvient pendant sa visite
+  const retenir = (v) => { try { sessionStorage.setItem("sb-vue", v); } catch {} };
+  const vueChoisie = () => { try { return sessionStorage.getItem("sb-vue"); } catch { return null; } };
   function ouvrir() {
+    retenir("chat");
     scene.classList.add("ouvert");
     document.body.classList.add("sc-actif");
     document.querySelectorAll(".mode-btn").forEach((b) => b.classList.toggle("actif", b.dataset.mode === "chat"));
     flottant.hidden = true;
     if (!demarre) {
       demarre = true;
-      setTimeout(() => jouer({ dire: "Bonjour ! Je suis Sébastien. Demandez-moi ce que vous voulez voir : je vous le montre sur mon écran.", ecran: "accueil", suite: DEPART }), 400);
+      setTimeout(() => jouer({ dire: "Bonjour et bienvenue sur mon portfolio interactif ! Je suis Sébastien. Posez-moi vos questions : je vais essayer d'y répondre, ou de vous montrer sur mon écran.", ecran: "accueil", suite: DEPART }), 400);
     }
   }
   function fermer() {
+    retenir("classique");
     scene.classList.remove("ouvert");
     document.body.classList.remove("sc-actif");
     document.querySelectorAll(".mode-btn").forEach((b) => b.classList.toggle("actif", b.dataset.mode === "classique"));
@@ -641,5 +649,6 @@
     });
   }
 
-  if (location.hash === "#discuter") ouvrir();
+  // On ouvre la discussion, sauf si le lien vise une section précise (#contact…) ou si le visiteur a choisi la vue classique
+  if (location.hash === "#discuter" || (!location.hash && vueChoisie() !== "classique")) ouvrir();
 })();
