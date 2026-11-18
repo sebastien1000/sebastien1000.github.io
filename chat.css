@@ -332,3 +332,19 @@ body.sc-actif { overflow: hidden; }
   .sc-ecran { height: 26vh; }
   .sc-perso { width: 96px; }
 }
+
+/* Le titre « Mon portfolio… » centré en haut */
+.sc-haut { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+.sc-titres { grid-column: 2; align-items: center; text-align: center; }
+.sc-fermer { grid-column: 3; justify-self: end; }
+@media (max-width: 760px) {
+  .sc-haut { grid-template-columns: 1fr; justify-items: center; gap: 6px; }
+  .sc-titres, .sc-fermer { grid-column: 1; }
+  .sc-fermer { justify-self: center; }
+}
+/* Très petits téléphones : tout doit tenir sans se chevaucher */
+@media (max-width: 760px) and (max-height: 620px) {
+  .sc-ecran { height: 22vh; }
+  .sc-perso { width: 80px; }
+  .sc-bulle { font-size: 12px; padding: 8px 10px; margin-bottom: 4px; }
+}
