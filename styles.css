@@ -357,3 +357,4 @@ h2 { font-size: 28px; font-weight: 600; }
 .perso-avatar { width: 230px; align-self: center; display: block; overflow: visible; }
 .perso-avatar .clavier { fill: #9aa6b2; } .perso-avatar .capot { fill: #c9d2da; } .perso-avatar .sb { fill: var(--accent); }
 .perso-avatar text { fill: #fff; font-family: "Manrope", sans-serif; font-weight: 700; font-size: 11px; text-anchor: middle; }
+

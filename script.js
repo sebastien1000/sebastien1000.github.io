@@ -342,8 +342,9 @@ async function discussion(scene) {
     ["moi", "3 semaines en entreprise, 1 semaine à l'école"],
     ["eux", "Vous avez déjà un projet utilisé en vrai ?"],
     ["moi", "Oui, une appli de planning pour un salon"],
-    ["eux", "On peut s'appeler cette semaine ?"],
-    ["moi", "Avec plaisir : 06 64 06 27 75"],
+    ["eux", "Comment vous contacter ?"],
+    ["moi", "Par e-mail : beck.sebastien76220@gmail.com"],
+    ["moi", "Ou par message sur LinkedIn"],
   ];
   const ajouter = (classe, html) => {
     const d = document.createElement("div");
