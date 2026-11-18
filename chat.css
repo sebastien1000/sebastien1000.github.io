@@ -312,3 +312,23 @@ body.sc-actif { overflow: hidden; }
 @keyframes sc-trait { from { transform: scaleX(0); } }
 @media (max-width: 600px) { .sc-titre { font-size: 16px; } }
 @media (prefers-reduced-motion: reduce) { .sc-titre em::after { animation: none; } }
+
+/* La scène (écran + personnage) au milieu de l'écran, entre le titre et la zone de question */
+.sc-plateau { flex: 0 1 auto; margin: auto; padding-top: 120px; }
+@media (max-width: 760px) { .sc-plateau { flex: 1; margin: 0 auto; padding-top: 0; } }
+
+/* Téléphone : plus de place, plus rien qui se chevauche */
+@media (max-width: 760px) {
+  .sc-haut { align-items: flex-start; }
+  .sc-titre { font-size: 15px; }
+  .sc-statut { display: none; }
+  .sc-fermer { padding: 6px 10px; font-size: 13px; flex-shrink: 0; }
+  .sc-plateau { min-height: 0; }
+  .sc-ecran { height: 30vh; }
+  .sc-bulle { font-size: 13px; line-height: 1.4; margin-bottom: 12px; }
+  .sc-question { display: none; }
+}
+@media (max-width: 760px) and (max-height: 700px) {
+  .sc-ecran { height: 26vh; }
+  .sc-perso { width: 96px; }
+}

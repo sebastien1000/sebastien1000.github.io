@@ -252,6 +252,7 @@
   const form = scene.querySelector(".sc-saisie");
   const champ = form.querySelector("input");
   const micro = form.querySelector(".sc-micro");
+  if (window.matchMedia("(max-width: 500px)").matches) champ.placeholder = "Votre question…";
   let occupe = false, demarre = false;
 
   // ---------- Le personnage parle ----------
@@ -642,7 +643,7 @@
       champ.value = t;
       if (e.results[e.results.length - 1].isFinal) { champ.value = ""; poser(t); }
     };
-    reco.onend = () => { ecoute = false; micro.classList.remove("ecoute"); champ.placeholder = "Posez votre question à Sébastien…"; };
+    reco.onend = () => { ecoute = false; micro.classList.remove("ecoute"); champ.placeholder = window.matchMedia("(max-width: 500px)").matches ? "Votre question…" : "Posez votre question à Sébastien…"; };
     micro.addEventListener("click", () => {
       if (ecoute) { reco.stop(); return; }
       try { reco.start(); ecoute = true; micro.classList.add("ecoute"); champ.placeholder = "Je vous écoute…"; } catch {}
